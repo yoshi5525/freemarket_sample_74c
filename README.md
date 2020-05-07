@@ -102,7 +102,7 @@ Things you may want to cover:
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null:false|
 
 ### Association
 - has_many :items
@@ -114,7 +114,7 @@ Things you may want to cover:
 |item|references|null:false, foreign_key: true|
 
 ### Association
-- belongs_to :item, optional: true
+- belongs_to :item
 
 ## commentsテーブル
 |Column|Type|Options|
