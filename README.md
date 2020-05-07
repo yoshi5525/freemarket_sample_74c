@@ -48,8 +48,8 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |introduction|text|null: false|
-|category|string|null: false|
-|brand|string|null: false|
+|category|references|null: false, foreign_key: true|
+|brand|references|foreign_key: true|
 |condition|string|null: false|
 |area|string|null: false|
 |size|string|
@@ -61,6 +61,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :category
+- belongs_to :brand
 - has_many :images, dependent: :destroy
 - has_many :comments, dependent: :destroy
 
@@ -94,6 +95,14 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null:false|
 |ancestry|string|null:false|
+
+### Association
+- has_many :items
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
 
 ### Association
 - has_many :items
