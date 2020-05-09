@@ -1,0 +1,13 @@
+.new-registration__page
+  = render "shared/logo"
+  .main-block
+    .main-block__top
+      新規会員登録
+    .main-block__bottom
+      .main-block__bottom__link
+        = link_to new_user_path do
+          .main-block__bottom__link__icon
+            = icon('far', 'envelope', class: 'icon')
+          .main-block__bottom__link__text
+            メールアドレスで登録する
+  = render "shared/footer"

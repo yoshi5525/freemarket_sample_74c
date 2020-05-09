@@ -1,0 +1,34 @@
+.user__new-address__page
+  = render "shared/logo"
+  .user__new-address__page__main
+    .user__new-address__page__main__top
+      住所情報
+    .user__new-address__page__main__input
+      .user__new-address__page__main__input__title
+        郵便番号
+        %span.require 必須
+      %input.post_code{ type: "text", placeholder: " 例）123-4567"}
+      .user__new-address__page__main__input__title
+        都道府県
+        %span.require 必須
+      %input.prefecture{ type: "text", placeholder: " 例）東京都"}
+      .user__new-address__page__main__input__title
+        市区町村
+        %span.require 必須
+      %input.city{ type: "text", placeholder: " 例）渋谷区"}
+      .user__new-address__page__main__input__title
+        番地
+        %span.require 必須
+      %input.address{ type: "text", placeholder: " 例）道玄坂3-2"}
+      .user__new-address__page__main__input__title
+        建物名
+        %span.arbitrary 任意
+      %input.apartment{ type: "text", placeholder: " 例）フォンティスビル7F"}
+      .user__new-address__page__main__input__title
+        お届け先の電話番号
+        %span.arbitrary 任意
+      %input.tel_number{ type: "tel", name: "tel_number", placeholder: ""}
+      .link-block
+        = link_to create_address_users_path do
+          %input.registration-btn{ type: "submit", value: "登録する"}
+  = render "shared/footer"

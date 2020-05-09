@@ -1,0 +1,14 @@
+.login-page
+  = render "shared/logo"
+  .main-block
+    .main-block__top
+      %h3 アカウントをお持ちでない方はこちら
+      .new-registration__link
+        = link_to new_user_registration_path do
+          .new-registration__link__text
+            新規会員登録
+    .main-block__login-form
+      %input.main-block__login-form__email{ type: "email", name: "email", placeholder: "メールアドレス"}
+      %input.main-block__login-form__password{ type: "password", name: "password", placeholder: "パスワード"}
+      %input.main-block__login-form__login-btn{ type: "submit", value: "ログイン"}
+  = render "shared/footer"
