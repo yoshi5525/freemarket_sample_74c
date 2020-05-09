@@ -50,6 +50,5 @@ test:
 production:
   <<: *default
   database: freemarket_sample_74c_production
-  username: root            #rootに変更
-  password: <%= ENV['DATABASE_PASSWORD'] %> #chat-spadeで使った変数
-  socket: /var/lib/mysql/mysql.sock #必須の指定
+  username: freemarket_sample_74c
+  password: <%= ENV['FREEMARKET_SAMPLE_74C_DATABASE_PASSWORD'] %>
