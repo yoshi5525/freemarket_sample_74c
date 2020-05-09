@@ -1,0 +1,235 @@
+.wrapper {
+  width: 100%;
+  background-color: rgb(235, 232, 232);
+  box-sizing: border-box;
+  padding: 30px;
+  .logout-main {
+    @include main-bar;
+    .logout-box {
+      height: 200px;
+      background-color: $white-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .logout-btn {
+        padding: 10px 60px;
+        background-color: $main-color;
+        color: $white-color;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .mypage-show {
+    @include main-bar;
+    .user-image {
+      height: 200px;
+      background: radial-gradient(rgb(168, 231, 196), rgb(74, 245, 222));
+      text-align: center;
+      &__img {
+        margin-top: 30px;
+        border-radius: 50%;
+      }
+      .user-name {
+        margin-bottom: 5px;
+        display: block;
+        font-weight: bolder;
+      }
+      .user-name:hover {
+        color: rgb(100, 99, 99);
+        text-decoration: underline;
+      }
+      .user-box {
+        display: flex;
+        justify-content: center;
+        &__exhibition {
+          margin-left: 20px;
+        }
+        .number {
+          padding: 0 10px;
+          font-weight: bolder;
+        }
+      }
+    }
+    .todo-box {
+      margin-bottom: 50px;
+      .mypage-tabs {
+        @include mypage-tabs;
+        .tab.active {
+          @include mypage-tab-active(2);
+        }
+        .tab {
+          @include mypage-tab(2);
+        }
+      }
+      .mypage-panels {
+        .panel.show {
+          @include mypage-panel-show;
+          .todos {
+            .todo {
+              padding: 10px;
+              display: flex;
+              cursor: pointer;
+              &__body {
+                width: 100%;
+                font-size: 14px;
+                margin: 0 40px;
+                &__info {
+                  display: flex;
+                  color: gray;
+                  &__icon {
+                    margin-right: 10px;
+                    color: gray;
+                  }
+                  .repuired {
+                    background-color: rgb(0, 162, 255);
+                    color: white;
+                    padding: 0 5px;
+                  }
+                }
+              }
+              &__right-icon {
+                margin: auto;
+              }
+            }
+            .todo:hover {
+              background-color: rgb(219, 215, 215);
+            }
+          }
+        }
+        .panel{
+          @include mypage-panel;
+        }
+      }
+    }
+    .purchase-product {
+      background-color: $white-color;
+      margin-bottom: 50px;
+      &__title {
+        height: 80px;
+        line-height: 80px;
+        padding-left: 20px;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      .mypage-tabs {
+        @include mypage-tabs;
+        .tab.active {
+          @include mypage-tab-active(2);
+        }
+        .tab {
+          @include mypage-tab(2);
+        }
+      }
+      .mypage-panels {
+        .panel.show {
+          @include mypage-panel-show;
+          .items {
+            .item {
+              padding: 10px;
+              display: flex;
+              cursor: pointer;
+              &__body {
+                width: 100%;
+                font-size: 14px;
+                margin: 0 40px;
+                &__info {
+                  display: flex;
+                  color: gray;
+                  &__icon {
+                    margin-right: 10px;
+                    color: gray;
+                  }
+                  .repuired {
+                    background-color: rgb(0, 162, 255);
+                    color: white;
+                    padding: 0 5px;
+                  }
+                }
+              }
+              &__right-icon {
+                margin: auto;
+              }
+            }
+            .item:hover {
+              background-color: rgb(219, 215, 215);
+            }
+          }
+        }
+        .panel{
+          @include mypage-panel;
+        }
+      }
+    }
+    .listing-product {
+      background-color: $white-color;
+      margin-bottom: 50px;
+      &__title {
+        height: 80px;
+        line-height: 80px;
+        padding-left: 20px;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      .mypage-tabs {
+        @include mypage-tabs;
+        .tab.active {
+          @include mypage-tab-active(3);
+        }
+        .tab {
+          @include mypage-tab(3);
+        }
+      }
+      .mypage-panels {
+        .panel.show {
+          @include mypage-panel-show;
+          .items {
+            .item {
+              padding: 10px;
+              display: flex;
+              cursor: pointer;
+              &__body {
+                width: 100%;
+                font-size: 14px;
+                margin: 0 40px;
+                &__info {
+                  display: flex;
+                  color: gray;
+                  &__icon {
+                    margin-right: 10px;
+                    color: gray;
+                  }
+                  .repuired {
+                    background-color: rgb(0, 162, 255);
+                    color: white;
+                    padding: 0 5px;
+                  }
+                }
+              }
+              &__right-icon {
+                margin: auto;
+              }
+            }
+            .item:hover {
+              background-color: rgb(219, 215, 215);
+            }
+          }
+        }
+        .panel{
+          @include mypage-panel;
+        }
+      }
+    }
+  }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

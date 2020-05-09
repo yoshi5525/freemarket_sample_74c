@@ -1,0 +1,90 @@
+.wrapper.clearfix
+  = render "side_bar"
+
+  .mypage-show
+    .user-image
+      = image_tag "/member_photo_noimage_thumb.png", size: "100x100", alt: "", class: "user-image__img"
+      .user-name
+        = link_to "テストさん", "#"
+      .user-box
+        %p.user-box__evaluation
+          評価
+        .number
+          = "#{0}"
+        %p.user-box__exhibition
+          出品数
+        .number
+          = "#{0}"
+    .todo-box
+      %ul.mypage-tabs
+        %li.tab.active
+          お知らせ
+        %li.tab
+          やることリスト
+      %ul.mypage-panels
+        %li.panel.show
+          .todos
+            -# データの登録ができたらeach文に変更する
+            -# @todoes.each do |todo|
+            = link_to "#", class: "todo" do
+              .todo__img
+                = image_tag "/icon_brand.png", size: "40x40", alt: ""
+              .todo__body
+                .todo__body__text
+                  = simple_format "事務局からのメッセージ"
+                .todo__body__info
+                  .todo__body__info__icon
+                    = icon('fa', 'clock')
+                  .todo__body__info__num
+                    1時間前
+              .todo__right-icon
+                = icon('fa','angle-right')
+        %li.panel
+    .purchase-product
+      %h3.purchase-product__title
+        購入した商品
+      %ul.mypage-tabs
+        %li.tab.active
+          取引中
+        %li.tab
+          過去の取引
+      %ul.mypage-panels
+        %li.panel.show
+          .items
+            = link_to "#", class: "item" do
+              .item__img
+                = image_tag "/icon_brand.png", size: "40x40", alt: ""
+              .item__body
+                .item__body__text
+                  = simple_format "（仮）テレビを購入"
+                .item__body__info
+                  %p.repuired
+                    （仮）発送完了
+              .item__right-icon
+                = icon('fa','angle-right')
+        %li.panel
+    .listing-product
+      %h3.listing-product__title
+        出品した商品
+      %ul.mypage-tabs
+        %li.tab.active
+          出品中
+        %li.tab
+          取引中
+        %li.tab
+          売却済み
+      %ul.mypage-panels
+        %li.panel.show
+          .items
+            = link_to "#", class: "item" do
+              .item__img
+                = image_tag "/icon_brand.png", size: "40x40", alt: ""
+              .item__body
+                .item__body__text
+                  = simple_format "（仮）パソコンを出品"
+                .item__body__info
+                  %p.repuired
+                    （仮）発送待ち
+              .item__right-icon
+                = icon('fa','angle-right')
+        %li.panel
