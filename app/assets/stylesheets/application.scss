@@ -7,3 +7,10 @@
 @import "users/new";
 @import "users/new_address";
 @import "users/create_address";
+@import "modules/top";
+@import "modules/header";
+@import "modules/footer";
+
+* {
+  box-sizing: border-box;
+}
