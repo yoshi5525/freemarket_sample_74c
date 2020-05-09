@@ -34,12 +34,15 @@
               %tr
                 %th カテゴリー
                 %td 
-                  %a{:href => "#"} レディース
+                  =link_to '#' do
+                    レディース
                   %br/
-                  %a{:href => "#"} トップス
+                  =link_to '#' do
+                    トップス
                   %br/
-                  %a{:href => "#"} Tシャツ/カットソー(半袖/袖なし)
-              %tr
+                  =link_to '#' do
+                    Tシャツ/カットソー(半袖/袖なし)
+              %tr 
                 %th ブランド
                 %td
               %tr
@@ -54,7 +57,8 @@
               %tr 
                 %th 発送元の地域
                 %td 
-                  %a{:href => "#"}青森県
+                  =link_to '#' do
+                    青森県
               %tr 
                 %th 発送日の目安
                 %td 1-2日で発送
@@ -65,32 +69,33 @@
               お気に入り 0
           %ul.main__showMain__contentRight__topContent__itemBox__optionalArea__optional
             %li.main__showMain__contentRight__topContent__itemBox__optionalArea__optional__optionalBtn
-              %a{:href => "a"}
+              =link_to  '#' do
                 %i.fas.fa-flag
                 不適切な商品の通報
         .main__showMain__contentRight__topContent__commentBox
           %ul.main__showMain__contentRight__topContent__commentBox__commentContents
-          %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "#", :method => "post"}
-            %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-            %input{:name => "authenticity_token", :type => "hidden", :value => "gyvWrYv/zM4S5LsgDn3L8BuUZAQ1lpewtQWNPCu+HPL3KHSTLkZTWoGbARzyVOYgdUDUcN53biKkBNXxiuCCbQ=="}/
-            %textarea#comment_body{:name => "comment[body]", :required => "required"}
+          %form#new_comment.new_comment{"accept-charset": "UTF-8", action: "#", method: "post"}
+            %input{name: "utf8", type: "hidden", value: "✓"}/
+            %input{name: "authenticity_token", type: "hidden", value: "gyvWrYv/zM4S5LsgDn3L8BuUZAQ1lpewtQWNPCu+HPL3KHSTLkZTWoGbARzyVOYgdUDUcN53biKkBNXxiuCCbQ=="}/
+            %textarea#comment_body{name: "comment[body]", required: "required"}
             %p.main__showMain__contentRight__topContent__commentBox__commentContents__noticeMsg
               相手のことを考え丁寧なコメントを心がけましょう。
               %br/
               不快な言葉遣い等は退会処分となる事があります。
-            %button.main__showMain__contentRight__topContent__commentBox__commentContents__commentBtn{:name => "button", :type => "submit"}
+            %button.main__showMain__contentRight__topContent__commentBox__commentContents__commentBtn{name: "button", typ: "submit"}
               %i.fa.fa-comment 
               コメントする
           %ul.main__showMain__contentRight__links
             %li 
-              %a{:href => "#"}
+              =link_to  '#' do
                 %i.fa.fa-angle-left
                 %span
                   前の商品 
             %li
-              %a{:fref =>"#"}
+              =link_to  '#' do
                 %span
                   後ろの商品
                   %i.fa.fa-angle-right
         .main__showMain__contentRight__relatedItems
-          %a{:href => "#"} レディースをもっと見る
+          =link_to  '#' do
+            レディースをもっと見る
