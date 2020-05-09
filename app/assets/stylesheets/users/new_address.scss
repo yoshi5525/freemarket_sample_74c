@@ -1,0 +1,58 @@
+.user__new-address__page {
+  @include user-page__wrapper;
+
+  & .logo {
+    @include logo;
+  }
+
+  &__main {
+    @include user-page__main;
+
+    &__top {
+      @include content-border;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+
+    }
+    &__input {
+      @include content;
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+        & .require {
+          @include require;
+        }
+      & .post_code {
+        @include input-box;
+      }
+      & .prefecture {
+        @include input-box;
+      }
+      & .city {
+        @include input-box;
+      }
+      & .address {
+        @include input-box;
+      }
+      & .arbitrary {
+        @include arbitrary;
+      }
+      & .apartment {
+        @include input-box;
+      }
+      & .tel_number {
+        @include input-box;
+      }
+      
+      & .registration-btn {
+        @include submit-btn;
+      }
+    }
+  }
+  @include footer;
+}
