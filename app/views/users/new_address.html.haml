@@ -27,7 +27,7 @@
       .user__new-address__page__main__input__title
         お届け先の電話番号
         %span.arbitrary 任意
-      %input.tel_number{ type: "tel", name: "tel_number", placeholder: ""}
+      %input.tel_number{ type: "tel", name: "tel_number", placeholder: "ハイフンなし"}
       .link-block
         = link_to create_address_users_path do
           %input.registration-btn{ type: "submit", value: "登録する"}
