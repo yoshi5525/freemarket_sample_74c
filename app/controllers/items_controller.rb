@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def show
+  def new
   end
 
 end
