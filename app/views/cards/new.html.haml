@@ -1,0 +1,48 @@
+.wrapper.clearfix
+  = render "users/side_bar"
+
+  .card-main
+    %h3.registration-title
+      クレジットカード情報入力
+    .registration-box
+      .registration-box__form
+        = form_with model: @card, local: true do |f|
+          .card-input
+            %p.card-number
+              カード番号
+            %p.repuired
+              必須
+          = f.text_field :card_number ,class: "number-input", placeholder: "半角数字のみ"
+          %ul.credit-card
+            %li.credit-card__card-list
+              = image_tag "/visa.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/master-card.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/saison-card.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/jcb.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/dinersclub.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/discover.svg", size: "30x30"
+            %li.credit-card__card-list
+              = image_tag "/american_express.svg", size: "30x30"
+          .card-data
+            %p.expiration
+              有効期限
+            %p.repuired
+              必須
+          .date
+            = f.select :expiration_month,[["1",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: "card-date__month"
+            %span 月
+            = f.select :expiration_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]],{} , class: "card-date__year"
+            %span 年
+          .card-security
+            %p.security-code
+              セキュリティコード
+            %p.repuired
+              必須
+          = f.text_field :security_code, class: "security-input", placeholder: "カード背面4桁もしくは3桁の番号"
+          = link_to "カード裏面の番号とは？", "#", class: "card-info"
+          = f.submit "追加する", class: "submit-btn"

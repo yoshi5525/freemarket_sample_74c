@@ -14,6 +14,18 @@
  *= require_self
  */
 @import "reset";
+@import "config/colors";
+@import "mixin/mixins";
+@import "modules/side_bar";
+@import "modules/user";
+@import "modules/card";
+@import "modules/top";
+@import "modules/header";
+@import "modules/footer";
 @import "items";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+* {
+  box-sizing: border-box;
+}
