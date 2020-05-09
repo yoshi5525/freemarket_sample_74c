@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  def show
-  end
 
-  def destroy
+  def new_address
+  end
+    
+  def create_address
+  end
+    
+  def show
   end
 end

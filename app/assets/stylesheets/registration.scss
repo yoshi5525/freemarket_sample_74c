@@ -1,0 +1,38 @@
+.new-registration__page {
+  @include user-page__wrapper;
+  height: 100vh;
+
+  & .logo {
+    @include logo;
+  }
+
+  & .main-block {
+    @include user-page__main;
+    text-align: center;
+
+    &__top {
+      @include content-border;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &__bottom {
+      padding: 40px 0;
+      position: relative;
+
+      &__link {
+        @include link-block;
+        background-color: #2BCCD1;
+        position: relative;
+        
+        &__icon {
+          color: #FFFFFF;
+          font-size: 20px;
+          position: absolute;
+          left: 20px;
+        }
+      }
+    }
+  }
+  @include footer;
+}

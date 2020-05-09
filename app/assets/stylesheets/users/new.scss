@@ -1,0 +1,104 @@
+.user-registration__page {
+  @include user-page__wrapper;
+
+  .header {
+
+    & .logo {
+      @include logo;
+    }
+  }
+
+  & .user-page__main {
+    @include user-page__main;
+
+    &__top {
+      @include content-border;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    &__input {
+      @include content;
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        margin-top: 10px;
+        font-weight: bold;
+
+        & .require {
+          @include require;
+        }
+      }
+
+      & .nickname {
+        @include input-box;
+      }
+
+      & .email {
+        @include input-box;
+      }
+
+      & .comment {
+      margin: 10px 0;
+      font-weight: bold;
+
+        & h3 {
+          margin-top: 5px;
+          font-size: 14px;
+        }
+      }
+      & .name {
+        display: flex;
+        justify-content: space-between;
+
+        & .first_name {
+          @include input-box__medium;
+        }
+
+        & .family_name {
+          @include input-box__medium;
+        }
+      }
+      
+      & .name_kana {
+
+        & .first_name_kana {
+          @include input-box__medium;
+        }
+
+        & .family_name_kana {
+          @include input-box__medium;
+        }
+      }
+
+      & .birth {
+        display: flex;
+        justify-content: space-between;
+
+        & span {
+          height: 0;
+          line-height: 60px;
+        }
+
+        & .birth_year {
+          @include input-box__small;
+        }
+
+        & .birth_month {
+          @include input-box__small;
+        }
+
+        & .birth_day {
+          @include input-box__small;
+        }
+      }
+
+      & .next-btn {
+        @include submit-btn;
+      }
+    }
+  }
+  @include footer;
+}
