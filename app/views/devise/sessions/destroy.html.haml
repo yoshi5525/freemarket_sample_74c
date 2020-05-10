@@ -1,6 +1,10 @@
+= render "shared/header"
+
 .wrapper.clearfix
   = render "users/side_bar"
 
   .logout-main
     .logout-box
       = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-btn"
+
+= render "shared/footer"

@@ -1,3 +1,5 @@
+= render "shared/header"
+
 .wrapper.clearfix
   = render "users/side_bar"
 
@@ -15,19 +17,19 @@
           = f.text_field :card_number ,class: "number-input", placeholder: "半角数字のみ"
           %ul.credit-card
             %li.credit-card__card-list
-              = image_tag "/visa.svg", size: "30x30"
+              = image_tag "visa.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/master-card.svg", size: "30x30"
+              = image_tag "master-card.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/saison-card.svg", size: "30x30"
+              = image_tag "saison-card.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/jcb.svg", size: "30x30"
+              = image_tag "jcb.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/dinersclub.svg", size: "30x30"
+              = image_tag "dinersclub.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/discover.svg", size: "30x30"
+              = image_tag "discover.svg", size: "30x30"
             %li.credit-card__card-list
-              = image_tag "/american_express.svg", size: "30x30"
+              = image_tag "american_express.svg", size: "30x30"
           .card-data
             %p.expiration
               有効期限
@@ -46,3 +48,5 @@
           = f.text_field :security_code, class: "security-input", placeholder: "カード背面4桁もしくは3桁の番号"
           = link_to "カード裏面の番号とは？", "#", class: "card-info"
           = f.submit "追加する", class: "submit-btn"
+
+= render "shared/footer"
