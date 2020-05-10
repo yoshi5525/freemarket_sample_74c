@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'items#index'
-  resources :items
+  resources :items do
+    collection do
+    get 'confirm'
+    end
+  end
   resources :users, only: [:show, :destroy] do
     resources :cards, only: :new
   end

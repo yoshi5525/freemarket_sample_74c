@@ -1,0 +1,48 @@
+= render partial: "shared/logo"
+
+%main.check-buy
+  %section.check-buy__content
+    %h2.check-buy__content__title
+      購入内容の確認
+    %section.check-buy__content__item
+      .check-buy__content__item__inner
+        .check-buy__content__item__inner__box
+          %h3.check-buy__content__item__inner__box__image
+            = image_tag "/assets/hat.png"
+          .check-buy__content__item__inner__box__detail
+            %p.check-buy__content__item__inner__box__detail__name
+              オシャレな帽子
+            %p.check-buy__content__item__inner__box__detail__price
+              ¥620 （税込）送料込み
+
+    %section.check-buy__content__item
+      .check-buy__content__item__inner
+        %form.check-buy__content__item__inner__form
+          %ul.check-buy__content__item__inner__form__price
+            %li.check-buy__content__item__inner__form__price__box
+              .check-buy__content__item__inner__form__price__box__head
+                支払い金額
+              .check-buy__content__item__inner__form__price__box__body
+                ¥620
+
+          %section.check-buy__content__item__inner__form__payment
+            .check-buy__content__item__inner__form__payment__inner
+              %h3.check-buy__content__item__inner__form__payment__box__title
+                支払い方法
+              = link_to "#" do
+                %p.check-buy__content__item__inner__form__payment__box__title__under
+                  登録してください
+
+          %section.check-buy__content__item__inner__form__delivery
+            .check-buy__content__item__inner__form__delivery__inner
+              %h3.check-buy__content__item__inner__form__delivery__box__title
+                配送先
+              = link_to "#" do
+                %p.check-buy__content__item__inner__form__delivery__box__title__under
+                  登録してください
+
+          %section.check-buy__content__item__inner__form__fix
+            %button.check-buy__content__item__inner__form__fix__btn{type: "submit"}
+              購入する
+
+= render partial: "shared/user_footer"
