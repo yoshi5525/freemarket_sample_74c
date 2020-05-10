@@ -1,9 +1,11 @@
+= render "shared/header"
+
 .wrapper.clearfix
   = render "side_bar"
 
   .mypage-show
     .user-image
-      = image_tag "/member_photo_noimage_thumb.png", size: "100x100", alt: "", class: "user-image__img"
+      = image_tag "member_photo_noimage_thumb.png", size: "100x100", alt: "", class: "user-image__img"
       .user-name
         = link_to "テストさん", "#"
       .user-box
@@ -88,3 +90,5 @@
               .item__right-icon
                 = icon('fa','angle-right')
         %li.panel
+
+= render "shared/footer"
