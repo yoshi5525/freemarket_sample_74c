@@ -1,0 +1,109 @@
+.header
+  .header__top
+    = render "shared/logo"
+     
+
+.new-wrapper
+  .new-wrapper__main
+    .new-wrapper__main__title
+      出品画像
+      %span{class: "require"} 必須
+    .new-wrapper__main__text
+      最大10枚までアップロードできます
+    .new-wrapper__main__image-field
+      %i{class: "fas fa-camera"}
+      .new-wrapper__main__image-field__text
+        ドラッグアンドドロップ
+        %br
+        またはクリックしてファイルをアップロード
+  .new-wrapper__main
+    .new-wrapper__main__title
+      商品名
+      %span{class: "require"} 必須
+    %input{class: "new-wrapper__main__input-text", placeholder: "40文字まで"}
+    .new-wrapper__main__title.spacing
+      商品の説明
+      %span{class: "require"} 必須
+    %textarea{class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      商品の詳細
+    .new-wrapper__main__title
+      カテゴリー
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+      %option{value: "3"} 選択肢3
+    .new-wrapper__main__title
+      サイズ
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+      %option{value: "3"} 選択肢3
+    .new-wrapper__main__title.spacing
+      ブランド
+      %span{class: "any"} 任意
+    %input{class: "new-wrapper__main__input-text", placeholder: "例）シャネル"}
+    .new-wrapper__main__title.spacing
+      商品の状態
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+      %option{value: "3"} 選択肢3
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      配送について
+    .new-wrapper__main__title
+      配送料の負担
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+    .new-wrapper__main__title.spacing
+      発送元の地域
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+    .new-wrapper__main__title.spacing
+      発送までの日数
+      %span{class: "require"} 必須
+    %select{class: "new-wrapper__main__input-select"}
+      %option{value: "0"} 選択してください
+      %option{value: "1"} 選択肢1
+      %option{value: "2"} 選択肢2
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      価格（¥300〜9,999,999）
+    .new-wrapper__main__title.float-left
+      販売価格
+      %span{class: "require"} 必須
+    .new-wrapper__main__input-price.float-right
+      ¥
+      %input{class: "new-wrapper__main__input-price__input", placeholder: 0}
+    .spacing
+    .spacing
+    %input{type: "submit", value: "出品する", class:"new-wrapper__main__submit"}
+    .new-wrapper__main__caution
+      禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+.footer
+  .footer__top
+    .privacy
+      = link_to "#" do
+        プライバシーポリシー
+    .rule
+      = link_to "#" do
+        フリマ利用規約
+    .commercial
+      = link_to "#" do
+        特定商取引に関する表記
+  .footer__copyright ©︎ Furima
