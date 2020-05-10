@@ -7,20 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .fa-codepen{
-      font-size: 30px;
-      color: $main-color;
-    }
-    a{
-      &:hover{
-        text-decoration: none;
-      }
-    }
-    &__logo{
-      font-size: 30px;
-      font-weight: bold;
-      color: black;
-    }
+    
   }
 }
 
@@ -43,7 +30,7 @@
       color: white;
       font-size: 12px;
       border-radius: 4px;
-      background-color: $main-color;
+      background-color: #3CCACE;
     }
     .any{
       padding: 3px;
@@ -142,7 +129,7 @@
       margin-top: 40px;
       width: 400px;
       height: 44px;
-      background-color: $main-color;
+      background-color: #3CCACE;
       color: white;
       font-weight: bold;
       font-size: 16px;
@@ -169,19 +156,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .fa-codepen{
-      font-size: 30px;
-      color: gray;
-    }
-    a{
-      &:hover{
-        text-decoration: none;
-      }
-    }
-    &__logo{
-      font-size: 30px;
-      font-weight: bold;
-      color: gray;
-    }
+    
   }
 }
