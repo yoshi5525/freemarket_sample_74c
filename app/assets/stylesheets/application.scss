@@ -1,24 +1,22 @@
 
 @import "reset";
 @import "mixin/mixins";
+@import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "config/colors";
 @import "modules/side_bar";
 @import "modules/user";
 @import "modules/card";
 @import "modules/top";
+@import "modules/confirm";
 @import "modules/header";
 @import "modules/footer";
 @import "items";
+@import "users/create_address";
+@import "users/new_address";
+@import "users/new";
 @import "registration";
 @import "session";
-@import "users/new";
-@import "users/new_address";
-@import "users/create_address";
-@import "modules/new";
-
-
 
 * {
   box-sizing: border-box;
