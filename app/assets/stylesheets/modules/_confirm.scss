@@ -1,7 +1,13 @@
-.logo {
-  padding: 40px;
-  text-align: center;
-  // background-color: rgb(245, 245, 245);
+.header{
+  height: 100px;
+  background-color: #eee;
+  &__top{
+    height: 50px;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .footer {
