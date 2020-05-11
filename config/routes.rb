@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       get "new_address"
       get "create_address"
+      get "user-logout"
     end
   end
 end
