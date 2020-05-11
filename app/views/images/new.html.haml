@@ -1,0 +1,4 @@
+= form_with model: @image, local: true do |f|
+  = f.file_field :image
+  = f.submit
+  -# 1~3行目は画像投稿検証のための記述
