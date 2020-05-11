@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     
   def create_address
   end
+
+  def user_logout
+  end
     
   def show
   end
