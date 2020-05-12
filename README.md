@@ -34,7 +34,6 @@ Things you may want to cover:
 |birth_year|date|null: false|
 |birth_month|date|null: false|
 |birth_day|date|null: false|
-|tel_number|string|null: false|
 |email|string|null: false|
 
 ### Association
@@ -69,11 +68,12 @@ Things you may want to cover:
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|post_code|integer|null: false|
+|post_code|string|null: false|
 |prefecture|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |apartment|string|
+|tel_number|string|
 |user|references|null:false, foreign_key: true|
 
 ### Association
