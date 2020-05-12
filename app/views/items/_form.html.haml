@@ -1,0 +1,72 @@
+= form_for @item do |f|
+  .new-wrapper__main
+    .new-wrapper__main__title
+      出品画像
+      %span{class: "require"} 必須
+    .new-wrapper__main__text
+      最大10枚までアップロードできます
+    = f.label :image, class: "new-wrapper__main__image-field" do
+      = icon( 'fa', 'camera')
+      = f.fields_for :images do |i|
+        = i.file_field :image, size: "100x100", class: "input-box__image__file"
+      .new-wrapper__main__image-field__text
+        ドラッグアンドドロップ
+        %br
+        またはクリックしてファイルをアップロード
+  .new-wrapper__main
+    .new-wrapper__main__title
+      商品名
+      %span{class: "require"} 必須
+    = f.text_field :name, class: "new-wrapper__main__input-text", placeholder: "40文字まで"
+    .new-wrapper__main__title.spacing
+      商品の説明
+      %span{class: "require"} 必須
+    = f.text_area :introduction, class: "new-wrapper__main__input-textarea", placeholder: "商品の説明(必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      商品の詳細
+    .new-wrapper__main__title
+      カテゴリー
+      %span{class: "require"} 必須
+    -# = f.select :category, [["選択肢1", "1"], ["選択肢2", "2"], ["選択肢3", "3"]], include_blank: "選択して下さい"
+    .new-wrapper__main__title
+      サイズ
+      %span{class: "any"} 任意
+    = f.select :size, [["XS", "1"], ["S", "2"], ["M", "3"], ["L", "4"], ["LL", "5"], ["それ以上", "6"]], include_blank: "選択して下さい"
+    .new-wrapper__main__title.spacing
+      ブランド
+      %span{class: "any"} 任意
+    -# = f.text_field :brand, class: "new-wrapper__main__input-text", placeholder: "例）シャネル"
+    .new-wrapper__main__title.spacing
+      商品の状態
+      %span{class: "require"} 必須
+    = f.select :condition, [["新品、未使用", "1"], ["未使用に近い", "2"], ["目立った傷や汚れなし", "3"], ["やや汚れあり", "4"], ["傷や汚れあり", "5"], ["全体的に状態が悪い", "6"]], include_blank: "選択して下さい"
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      配送について
+    .new-wrapper__main__title
+      配送料の負担
+      %span{class: "require"} 必須
+    = f.select :postage, [["送料込み（出品者負担）", "1"], ["着払い（購入者負担）", "2"]], include_blank: "選択して下さい"
+    .new-wrapper__main__title.spacing
+      発送元の地域
+      %span{class: "require"} 必須
+    = f.collection_select :area_id, Area.all, :id, :name, prompt: "選択してください"
+    .new-wrapper__main__title.spacing
+      発送までの日数
+      %span{class: "require"} 必須
+    = f.select :preparation_day, [["1~2日で発送", "1"], ["2~3日で発送", "2"], ["4~7日で発送", "3"]], include_blank: "選択して下さい"
+  .new-wrapper__main
+    .new-wrapper__main__subtitle
+      価格（¥300〜9,999,999）
+    .new-wrapper__main__title.float-left
+      販売価格
+      %span{class: "require"} 必須
+    .new-wrapper__main__input-price.float-right
+      ¥
+      = f.number_field :price, class: "new-wrapper__main__input-price__input", placeholder: "0"
+    .spacing
+    .spacing
+    = f.submit "出品する", class:"new-wrapper__main__submit"
+    .new-wrapper__main__caution
+      禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
