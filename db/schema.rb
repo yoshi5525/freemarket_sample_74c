@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_071651) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.string "condition", null: false
-    t.string "area", null: false
+    t.integer "area_id", null: false
     t.string "size"
     t.integer "price", null: false
     t.integer "preparation_day", null: false

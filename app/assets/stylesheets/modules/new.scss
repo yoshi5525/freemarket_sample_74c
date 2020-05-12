@@ -100,7 +100,7 @@
     #item_postage {
       @include new-item-select;
     }
-    #item_area {
+    #item_area_id {
       @include new-item-select;
     }
     #item_preparation_day {

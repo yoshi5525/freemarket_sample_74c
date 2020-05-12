@@ -51,7 +51,7 @@ Things you may want to cover:
 |category|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
 |condition|string|null: false|
-|area|string|null: false|
+|area_id|integer|null: false|
 |size|string|
 |price|integer|null: false|
 |preparation_day|integer|null: false|
