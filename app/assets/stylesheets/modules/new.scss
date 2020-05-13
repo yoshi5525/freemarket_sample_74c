@@ -141,6 +141,22 @@
       border: 0px solid #000;
       cursor: pointer;
     }
+    &__cancel{
+      border-radius: 4px;
+      text-align: center;
+      line-height: 44px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+      width: 400px;
+      height: 44px;
+      background-color: $main-color;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border: 0px solid #000;
+      cursor: pointer;
+    }
     &__caution{
       font-size: 12px;
       padding: 20px;

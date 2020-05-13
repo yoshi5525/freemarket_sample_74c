@@ -16,6 +16,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])  # ①インスタンス変数にセット
+    @item.update(item_params)   # ②updateメソッドの実行
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :show
+    end
+  end
+
   def show
   end
 
