@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     collection do
     get 'confirm'
     end
-    # resources :images, only: [ :new, :create] 
+    resources :images, only: [:new, :create] 
   end
 
-  resources :users, only: [:new, :show, :destroy] do
+  resources :users, only: [:new, :show] do
     resources :cards, only: [:new]
     collection do
       get "new_address"
