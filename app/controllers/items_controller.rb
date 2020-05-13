@@ -5,15 +5,28 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.new
+    # @item = Item.includes(:images).order('created_at DESC')
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    # if @item.images.length == 1..10 && @item.save
+    if  @item.valid? && @item.images.length == 1..10
+      @item.save
       redirect_to @item
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   def show
@@ -24,7 +37,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage)
-    # params.requier(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, :category_id, :brand_id).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image])
+    # (:category_id, :brand_id).merge(seller_id: current_user.id)
   end
 end

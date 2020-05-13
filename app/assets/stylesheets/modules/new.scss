@@ -52,29 +52,35 @@
     &__text{
       padding: 0 12px;
     }
-    &__image-field{
-      width: 660px;
-      height: 160px;
-      margin: 16px auto;
-      background-color: #eee;
-      border: 1px dashed #ccc;
+    &__image-box {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      text-align: center;
-      position: relative;
-      cursor: pointer;
-      .fa-camera{
-        position: absolute;
-        top: 40px;
-        font-size: 20px;
+      &____previews {
+        display: block;
       }
-      #item_images_image {
-        display: none;
-      }
-      &__text{
-        padding-top: 20px;
+      &__image-field{
+        width: 660px;
+        height: 160px;
+        margin: 16px auto;
+        background-color: #eee;
+        border: 1px dashed #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        .fa-camera{
+          position: absolute;
+          top: 40px;
+          font-size: 20px;
+        }
+        &__file {
+          display: none;
+        }
+        &__text{
+          padding-top: 20px;
+        }
       }
     }
     &__input-text{

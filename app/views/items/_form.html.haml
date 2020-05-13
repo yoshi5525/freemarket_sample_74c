@@ -5,14 +5,19 @@
       %span{class: "require"} 必須
     .new-wrapper__main__text
       最大10枚までアップロードできます
-    = f.label :image, class: "new-wrapper__main__image-field" do
-      = icon( 'fa', 'camera')
-      = f.fields_for :images do |i|
-        = i.file_field :image, size: "100x100", class: "input-box__image__file"
-      .new-wrapper__main__image-field__text
-        ドラッグアンドドロップ
-        %br
-        またはクリックしてファイルをアップロード
+    .new-wrapper__main__image-box
+      -# .new-wrapper__main__image-box__previews
+      -#   - if @item.persisted?
+      -#     = @item.images.each do |image|
+      -#       = image_tag image.image.url, size: "100x100"
+      %label{class: "new-wrapper__main__image-box__image-field"}
+        = icon( 'fa', 'camera')
+        = f.fields_for :images do |i|
+          = i.file_field :image, class: "new-wrapper__main__image-box__image-field__file"
+        .new-wrapper__main__image-box__image-field__text
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
   .new-wrapper__main
     .new-wrapper__main__title
       商品名
