@@ -14,6 +14,12 @@
           ドラッグアンドドロップ
           %br
           またはクリックしてファイルをアップロード
+        = f.fields_for :images do |i|
+          = i.file_field :image, class: "new-wrapper__main__image-box__image-field__file"
+        .new-wrapper__main__image-box__image-field__text
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
   .new-wrapper__main
     .new-wrapper__main__title
       商品名

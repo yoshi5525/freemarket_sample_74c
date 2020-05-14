@@ -103,21 +103,22 @@
             新規投稿商品
       .pickup-item__box__list
         .pickup-item__box__list__item
-          - @items.each do |item|
+          - @items[0..2].each do |item|
             = link_to item_path(item.id) do
-              - item.images.each do |image|
-                %figure.pickup-item__box__list__item__image
-                  = image_tag image.image.url
-                .pickup-item__box__list__item__body
-                  %h3.pickup-item__box__list__item__body__name
-                    = item.name
-                  .pickup-item__box__list__item__body__detail
-                    %ul
-                      %li
-                        = item.price
-                      %li
-                        %i.fa.fa-star
-                        0
-                    %p
-                      (税込)
+              - item.images.each.with_index(1) do |image,i|
+                - if i == 1
+                  %figure.pickup-item__box__list__item__image
+                    = image_tag image.image.url
+                  .pickup-item__box__list__item__body
+                    %h3.pickup-item__box__list__item__body__name
+                      = item.name
+                    .pickup-item__box__list__item__body__detail
+                      %ul
+                        %li
+                          = item.price
+                        %li
+                          %i.fa.fa-star
+                          0
+                      %p
+                        (税込)
 = render partial: "shared/footer"
