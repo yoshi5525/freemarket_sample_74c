@@ -1,0 +1,5 @@
+ja:
+  helpers:
+    submit:
+      create: "出品する"
+      update: "更新する"
