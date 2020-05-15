@@ -10,8 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if  @item.valid? && @item.images.length == 1..10
-      @item.save
+    if @item.save
       redirect_to @item
     else
       render :new
