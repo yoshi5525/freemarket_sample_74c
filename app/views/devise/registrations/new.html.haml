@@ -14,7 +14,7 @@
         .user-page__main__input__title
           メールアドレス
           %span.require 必須
-        = f.text_field :email, class: "email", placeholder: " PC・携帯どちらでも可"
+        = f.email_field :email, class: "email", placeholder: " PC・携帯どちらでも可"
         .user-page__main__input__title
           パスワード
           %span.require 必須
