@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except:[:index, :new, :create]
 
   def index
+    @items = Item.all.order(created_at: :desc)
   end
 
   def new
@@ -22,12 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])  # ①インスタンス変数にセット
-    @item.update(item_params)   # ②updateメソッドの実行
     if @item.update(item_params)
       redirect_to @item
     else
-      render :show
+      render :edit
     end
   end
 
@@ -44,6 +44,11 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id])
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
+
