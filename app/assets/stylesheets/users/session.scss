@@ -24,15 +24,15 @@
       display: flex;
       flex-direction: column;
 
-      &__email {
+      & .email {
         @include input-box;
       }
 
-      &__password {
+      & .password {
         @include input-box;
       }
       
-      &__login-btn {
+      & .login_btn {
         @include submit-btn;
       }
     }

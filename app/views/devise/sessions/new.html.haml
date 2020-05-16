@@ -7,8 +7,9 @@
         = link_to new_user_path do
           .new-registration__link__text
             新規会員登録
-    .main-block__login-form
-      %input.main-block__login-form__email{ type: "email", name: "email", placeholder: "メールアドレス"}
-      %input.main-block__login-form__password{ type: "password", name: "password", placeholder: "パスワード"}
-      %input.main-block__login-form__login-btn{ type: "submit", value: "ログイン"}
+    = form_with model: resource, url: session_path(resource_name) do |f|
+      .main-block__login-form
+        = f.email_field :email, class: "email", placeholder: "メールアドレス"
+        = f.password_field :password, class: "password", placeholder: "パスワード"
+        = f.submit "ログイン", class: "login_btn", value: "ログイン"
   = render "shared/user_footer"

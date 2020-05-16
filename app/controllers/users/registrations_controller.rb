@@ -9,11 +9,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
   end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
-  
+  def create
+    @user = User.new(sign_up_params)
+    unless @user.valid?
+      render :new and return
+    end
+    @user.save
+    redirect_to root_path
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -38,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def address_params
+    params.require(:address).permit(:post_code, :prefecture, :city, :address, :apartment, :tel_number)
+  end
 end

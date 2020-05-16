@@ -8,27 +8,26 @@
         .user__new-address__page__main__input__title
           郵便番号
           %span.require 必須
-        %input.post_code{ type: "text", placeholder: " 例）123-4567"}
+        = f.text_field :post_code, class: "post_code", placeholder: " 例）123-4567"
         .user__new-address__page__main__input__title
           都道府県
           %span.require 必須
-        %input.prefecture{ type: "text", placeholder: " 例）東京都"}
+        = f.text_field :prefecture, class: "post_code", placeholder: " 例）東京都"
         .user__new-address__page__main__input__title
           市区町村
           %span.require 必須
-        %input.city{ type: "text", placeholder: " 例）渋谷区"}
+        = f.text_field :city, class: "city", placeholder: " 例）渋谷区"
         .user__new-address__page__main__input__title
           番地
           %span.require 必須
-        %input.address{ type: "text", placeholder: " 例）道玄坂3-2"}
+        = f.text_field :address, class: "address", placeholder: " 例）道玄坂3-2"
         .user__new-address__page__main__input__title
           建物名
           %span.arbitrary 任意
-        %input.apartment{ type: "text", placeholder: " 例）フォンティスビル7F"}
+        = f.text_field :apartment, class: "apartment", placeholder: " 例）フォンティスビル7F"
         .user__new-address__page__main__input__title
           お届け先の電話番号
           %span.arbitrary 任意
-        %input.tel_number{ type: "tel", name: "tel_number", placeholder: "ハイフンなし"}
-        .link-block
-          %input.registration-btn{ type: "submit", value: "登録する"}
+        = f.telephone_field :tel_number, class: "tel_number", placeholder: " ハイフンなし"
+        = f.submit :registration_btn, class: "registration_btn", value: "登録する"
     = render "shared/user_footer"
