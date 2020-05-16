@@ -34,7 +34,6 @@ Things you may want to cover:
 |birth_year|date|null: false|
 |birth_month|date|null: false|
 |birth_day|date|null: false|
-|tell_number|integer|null: false|
 |email|string|null: false|
 
 ### Association
@@ -51,12 +50,13 @@ Things you may want to cover:
 |category|references|null: false, foreign_key: true|
 |brand|references|foreign_key: true|
 |condition|string|null: false|
-|area|string|null: false|
+|area_id|integer|null: false|
 |size|string|
 |price|integer|null: false|
 |preparation_day|integer|null: false|
 |postage|integer|null: false|
-|user|references|null: false|
+|seller|references|null: false, foreign_key: true|
+|buyer|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -68,11 +68,12 @@ Things you may want to cover:
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|post_code|integer|null: false|
+|post_code|string|null: false|
 |prefecture|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |apartment|string|
+|tel_number|string|
 |user|references|null:false, foreign_key: true|
 
 ### Association
@@ -81,10 +82,8 @@ Things you may want to cover:
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null:false, unique: true|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
+|customer_id|string|null:false|
+|card_id|string|null: false|
 |user|references|null:false, foreign_key: true|
 
 ### Association
@@ -94,7 +93,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
-|ancestry|string|null:false|
+|ancestry|string|
 
 ### Association
 - has_many :items

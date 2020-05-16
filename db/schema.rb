@@ -26,7 +26,22 @@ ActiveRecord::Schema.define(version: 2020_05_12_070558) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
     t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "condition", null: false
+    t.integer "area_id", null: false
+    t.string "size"
+    t.integer "price", null: false
+    t.integer "preparation_day", null: false
+    t.integer "postage", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,4 +67,5 @@ ActiveRecord::Schema.define(version: 2020_05_12_070558) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "images", "items"
 end
