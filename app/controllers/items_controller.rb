@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :destroy]
 
   def index
   end
@@ -24,12 +25,18 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def show
   end
 
   def confirm
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   private

@@ -38,8 +38,8 @@ li {
 .main {
   background: #f8f8f8;
   &__showMain {
-    padding: 40px;
     margin: 0 auto;
+    padding: 40px;
     &__contentRight {
       width: 700px;
       margin: 0 auto;
@@ -75,9 +75,8 @@ li {
             &__body {
               margin: 16px 0 0;
               &--main-image {
-                margin: 0;
-                padding: 0;
-                list-style: none;
+                display: flex;
+                position: relative;
                 & li{
                   display: flex;
                   flex-direction: column;
@@ -86,9 +85,8 @@ li {
                   margin: 0 auto;
                 }
                 & li img {
-                  display: flex;
+                  object-fit: cover;
                   height: 346px;
-                  width: 560px;
                 }
               }
               &--sub-image {
@@ -125,6 +123,44 @@ li {
           }
           &__table {
             margin-bottom: 20px;
+          }
+          &__linklist {
+            &__edit {
+              background-color: #3CCACE;
+              width: 100%;
+              line-height: 48px;
+              margin-bottom: 16px;
+              color: #fff;
+              font-size: 14px;
+              cursor: pointer;
+              font-weight: bold;
+              margin: 16px 0 16px 0;
+              text-align: center;
+              }
+            &__delete {
+              background-color: #aaa;
+              width: 100%;
+              line-height: 48px;
+              margin-bottom: 16px;
+              color: #fff;
+              font-size: 14px;
+              cursor: pointer;
+              font-weight: bold;
+              margin: 16px 0 16px 0;
+              text-align: center;
+            }
+            &__buy {
+              background-color:  #3CCACE;
+              width: 100%;
+              line-height: 48px;
+              margin-bottom: 16px;
+              cursor: pointer;
+              color: #fff;
+              font-size: 14px;
+              font-weight: bold;
+              margin: 16px 0 16px 0;
+              text-align: center;
+            }
           }
           &__optionalArea {
             display: flex;
@@ -163,31 +199,32 @@ li {
       } &__commentBox__commentContents {
       
       }
-          &__commentBox__commentContents__noticeMsg {
-            padding: 8px;
-            font-size: 14px;
-            background-color: #f8f8f8;
-            margin: 10px 0;
-            text-align: left;
-          }
-            &__commentBox__commentContents__commentBtn{
-              font-size: 18px;
-              line-height: 48px;
-              background: #3CCACE;
-              border: 1px solid #3CCACE;
-              color: #fff;
-              width: 60%;
-              font-size: 18px;
-              border-radius: 100px;
-            }
+      &__commentBox__commentContents__noticeMsg {
+        padding: 8px;
+        font-size: 14px;
+        background-color: #f8f8f8;
+        margin: 10px 0;
+        text-align: left;
       }
+        &__commentBox__commentContents__commentBtn{
+          font-size: 18px;
+          line-height: 48px;
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color: #fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+        }
+  }
       &__relatedItems {
         height: 100px;
       }
     }
   }
   &__contentLeftqq {
-    padding-bottom: 50px;
+    margin: 0;
+    padding: 0;
   }
 
 
