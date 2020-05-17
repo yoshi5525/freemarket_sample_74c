@@ -1,5 +1,5 @@
 = form_with model: @user,url: user_registration_path do |f|
-  = render "devise/shared/error_messages", resource: @user
+  = render "devise/shared/error_messages", resource: resource
   .user-registration__page
     .header
       = render "shared/logo"
@@ -33,7 +33,7 @@
             = f.text_field :family_name, class: "family_name", placeholder: " 例） 山田"
             = f.text_field :first_name, class: "first_name", placeholder: " 例） 太郎"
         .user-page__main__input__title
-          お名前（全角カナ）
+          お名前カナ（全角）
           %span.require 必須
           .name_kana
             = f.text_field :family_name_kana, class: "family_name_kana", placeholder: " 例） ヤマダ"
