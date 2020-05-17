@@ -1,0 +1,33 @@
+= form_with model: @address, local: true do |f|
+  .user__new-address__page
+    = render "shared/logo"
+    .user__new-address__page__main
+      .user__new-address__page__main__top
+        住所情報
+      .user__new-address__page__main__input
+        .user__new-address__page__main__input__title
+          郵便番号
+          %span.require 必須
+        = f.text_field :post_code, class: "post_code", placeholder: " 例）123-4567"
+        .user__new-address__page__main__input__title
+          都道府県
+          %span.require 必須
+        = f.text_field :prefecture, class: "post_code", placeholder: " 例）東京都"
+        .user__new-address__page__main__input__title
+          市区町村
+          %span.require 必須
+        = f.text_field :city, class: "city", placeholder: " 例）渋谷区"
+        .user__new-address__page__main__input__title
+          番地
+          %span.require 必須
+        = f.text_field :address, class: "address", placeholder: " 例）道玄坂3-2"
+        .user__new-address__page__main__input__title
+          建物名
+          %span.arbitrary 任意
+        = f.text_field :apartment, class: "apartment", placeholder: " 例）フォンティスビル7F"
+        .user__new-address__page__main__input__title
+          お届け先の電話番号
+          %span.arbitrary 任意
+        = f.telephone_field :tel_number, class: "tel_number", placeholder: " ハイフンなし"
+        = f.submit :registration_btn, class: "registration_btn", value: "登録する"
+    = render "shared/user_footer"

@@ -14,6 +14,12 @@
           ドラッグアンドドロップ
           %br
           またはクリックしてファイルをアップロード
+        = f.fields_for :images do |i|
+          = i.file_field :image, class: "new-wrapper__main__image-box__image-field__file"
+        .new-wrapper__main__image-box__image-field__text
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
   .new-wrapper__main
     .new-wrapper__main__title
       商品名
@@ -48,7 +54,7 @@
     .new-wrapper__main__title
       配送料の負担
       %span{class: "require"} 必須
-    = f.select :postage, [["送料込み（出品者負担）", "1"], ["着払い（購入者負担）", "2"]], include_blank: "選択して下さい"
+    = f.select :postage, Item.postages_i18n.invert {}, prompt: "選択してください"
     .new-wrapper__main__title.spacing
       発送元の地域
       %span{class: "require"} 必須
@@ -56,7 +62,7 @@
     .new-wrapper__main__title.spacing
       発送までの日数
       %span{class: "require"} 必須
-    = f.select :preparation_day, [["1~2日で発送", "1"], ["2~3日で発送", "2"], ["4~7日で発送", "3"]], include_blank: "選択して下さい"
+    = f.select :preparation_day, Item.preparation_days_i18n.invert {}, prompt: "選択してください"
   .new-wrapper__main
     .new-wrapper__main__subtitle
       価格（¥300〜9,999,999）

@@ -24,9 +24,9 @@
         margin-top: 10px;
         font-weight: bold;
       }
-        & .require {
-          @include require;
-        }
+      & .require {
+        @include require;
+      }
       & .post_code {
         @include input-box;
       }
@@ -49,7 +49,7 @@
         @include input-box;
       }
       
-      & .registration-btn {
+      & .registration_btn {
         @include submit-btn;
       }
     }
