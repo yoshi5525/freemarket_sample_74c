@@ -19,9 +19,14 @@
           = link_to "#" do
             ブランド
       %ul.header-inner__nav__right
-        %li.header-inner__nav__right__item
-          = link_to "#" do
-            ログイン
-        %li.header-inner__nav__right__item
-          = link_to "#" do
-            新規会員登録
+        - if user_signed_in?
+          %li.header-inner__nav__right__item
+            = link_to user_path(current_user) do
+              マイページ
+        - else
+          %li.header-inner__nav__right__item
+            = link_to new_user_session_path do
+              ログイン
+          %li.header-inner__nav__right__item
+            = link_to new_user_path do
+              新規会員登録
