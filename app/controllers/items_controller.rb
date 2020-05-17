@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    set_item
   end
 
   def update
