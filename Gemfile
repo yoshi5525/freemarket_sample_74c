@@ -75,6 +75,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'active_hash'
+
 gem 'rails-i18n'
 gem 'enum_help'
 
