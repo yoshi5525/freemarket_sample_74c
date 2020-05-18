@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except:[:index, :new, :create]
+  before_action :set_item, except:[:index, :new, :create, :confirm]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       redirect_to @item
     else
       render :new
@@ -43,17 +43,13 @@ class ItemsController < ApplicationController
   def confirm
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id])
+    def set_item
+      @item = Item.find(params[:id])
+    end
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
 end
 
