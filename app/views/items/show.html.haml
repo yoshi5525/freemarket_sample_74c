@@ -50,15 +50,15 @@
                 %th 商品のサイズ
                 %td
                   - if @item.size.present?
-                    = @item.size
+                    = @item.size_i18n
               %tr
                 %th 商品の状態
                 %td
-                  = @item.condition
+                  = @item.condition_i18n
               %tr
                 %th 配送料の負担
                 %td
-                  = @item.postage	
+                  = @item.postage_i18n
               %tr 
                 %th 発送元の地域
                 %td 
@@ -67,7 +67,7 @@
 
                 %th 発送日の目安
                 %td
-                  = @item.preparation_day
+                  = @item.preparation_day_i18n
             -# 出品者にしか商品の情報編集・削除のリンクが踏めないようになっている
       - if user_signed_in? && current_user.id == item.user_id
         .main__showMain__contentRight__topContent__itemBox__inklist
