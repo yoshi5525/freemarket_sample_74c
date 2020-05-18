@@ -1,4 +1,4 @@
-= form_with model: @user,url: user_registration_path do |f|
+= form_with(model: @user, local: true, url: user_registration_path) do |f|
   = render "devise/shared/error_messages", resource: resource
   .user-registration__page
     .header
@@ -18,7 +18,7 @@
         .user-page__main__input__title
           パスワード
           %span.require 必須
-        = f.password_field :password, class: "password", placeholder: " 英字数字両方を含む7文字以上"
+        = f.password_field :password, class: "password", placeholder: " 半角英字数字両方を含む7文字以上"
         .user-page__main__input__title
           パスワード（確認）
           %span.require 必須
