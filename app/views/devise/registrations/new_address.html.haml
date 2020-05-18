@@ -1,10 +1,23 @@
-= form_with model: @address, local: true do |f|
+= form_with(model: @address, local: true) do |f|
+  = render "devise/shared/error_messages", resource: @address
   .user__new-address__page
     = render "shared/logo"
     .user__new-address__page__main
       .user__new-address__page__main__top
-        住所情報
+        お届け先住所情報
       .user__new-address__page__main__input
+        .user__new-address__page__main__input__title
+          お名前（全角）
+          %span.require 必須
+          .name
+            = f.text_field :family_name, class: "family_name", placeholder: " 例） 山田"
+            = f.text_field :first_name, class: "first_name", placeholder: " 例） 太郎"
+        .user__new-address__page__main__input__title
+          お名前カナ（全角）
+          %span.require 必須
+          .name_kana
+            = f.text_field :family_name_kana, class: "family_name_kana", placeholder: " 例） ヤマダ"
+            = f.text_field :first_name_kana, class: "first_name_kana", placeholder: " 例） タロウ"
         .user__new-address__page__main__input__title
           郵便番号
           %span.require 必須
@@ -12,7 +25,7 @@
         .user__new-address__page__main__input__title
           都道府県
           %span.require 必須
-        = f.text_field :prefecture, class: "post_code", placeholder: " 例）東京都"
+        = f.collection_select :prefecture, Area.all, :id, :name, prompt: "選択してください"
         .user__new-address__page__main__input__title
           市区町村
           %span.require 必須
@@ -22,12 +35,12 @@
           %span.require 必須
         = f.text_field :address, class: "address", placeholder: " 例）道玄坂3-2"
         .user__new-address__page__main__input__title
-          建物名
+          建物名、部屋番号など
           %span.arbitrary 任意
         = f.text_field :apartment, class: "apartment", placeholder: " 例）フォンティスビル7F"
         .user__new-address__page__main__input__title
           お届け先の電話番号
           %span.arbitrary 任意
-        = f.telephone_field :tel_number, class: "tel_number", placeholder: " ハイフンなし"
-        = f.submit :registration_btn, class: "registration_btn", value: "登録する"
+        = f.telephone_field :tel_number, class: "tel_number", placeholder: " ハイフンなし10,11桁"
+        = f.submit "登録する", class: "registration_btn"
     = render "shared/user_footer"

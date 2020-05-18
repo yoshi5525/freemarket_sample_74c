@@ -1,6 +1,6 @@
 .user-registration__page {
   @include user-page__wrapper;
-
+  
   .header {
 
     & .logo {
@@ -71,7 +71,8 @@
       }
       
       & .name_kana {
-
+        display: flex;
+        justify-content: space-between;
         & .first_name_kana {
           @include input-box__medium;
         }
