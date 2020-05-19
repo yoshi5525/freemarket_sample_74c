@@ -1,0 +1,19 @@
+.header
+  .header__top
+    = render "shared/logo"
+
+.new-wrapper
+  = render partial: 'form'
+
+.footer
+  .footer__top
+    .privacy
+      = link_to "#" do
+        プライバシーポリシー
+    .rule
+      = link_to "#" do
+        フリマ利用規約
+    .commercial
+      = link_to "#" do
+        特定商取引に関する表記
+  .footer__copyright ©︎ Furima

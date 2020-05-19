@@ -6,14 +6,17 @@
     .new-wrapper__main__text
       最大10枚までアップロードできます
     .new-wrapper__main__image-box
-      %label{class: "new-wrapper__main__image-box__image-field"}
-        = icon( 'fa', 'camera')
+      .previews
+      %label{class: "new-wrapper__main__image-box__image-label", id: "image-label"}
+        .new-wrapper__main__image-box__image-label__image-field
+          = icon( 'fa', 'camera')
+          .new-wrapper__main__imagde-box__image-label__image-field__text
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
         = f.fields_for :images do |i|
-          = i.file_field :image, class: "new-wrapper__main__image-box__image-field__file"
-        .new-wrapper__main__image-box__image-field__text
-          ドラッグアンドドロップ
-          %br
-          またはクリックしてファイルをアップロード
+          .js-file_group{data: {index: i.index}}
+            = i.file_field :image, class: "js-file"
   .new-wrapper__main
     .new-wrapper__main__title
       商品名
@@ -29,11 +32,11 @@
     .new-wrapper__main__title
       カテゴリー
       %span{class: "require"} 必須
-    -# = f.select :category, [["選択肢1", "1"], ["選択肢2", "2"], ["選択肢3", "3"]], include_blank: "選択して下さい"
+    -# = f.select :category, [["選択してください", ""]"選択肢1", "選択肢2", 選択肢3"], {}
     .new-wrapper__main__title
       サイズ
       %span{class: "any"} 任意
-    = f.select :size, [["XS", "1"], ["S", "2"], ["M", "3"], ["L", "4"], ["LL", "5"], ["それ以上", "6"]], include_blank: "選択して下さい"
+    = f.select :size, [["選択してください", ""], "XS", "S", "M", "L", "LL", "それ以上"], {}
     .new-wrapper__main__title.spacing
       ブランド
       %span{class: "any"} 任意
@@ -41,14 +44,14 @@
     .new-wrapper__main__title.spacing
       商品の状態
       %span{class: "require"} 必須
-    = f.select :condition, [["新品、未使用", "1"], ["未使用に近い", "2"], ["目立った傷や汚れなし", "3"], ["やや汚れあり", "4"], ["傷や汚れあり", "5"], ["全体的に状態が悪い", "6"]], include_blank: "選択して下さい"
+    = f.select :condition, [["選択してください", ""], "新品未使用", "未使用に近い", "目立った傷や汚れなし", "やや汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {}
   .new-wrapper__main
     .new-wrapper__main__subtitle
       配送について
     .new-wrapper__main__title
       配送料の負担
       %span{class: "require"} 必須
-    = f.select :postage, [["送料込み（出品者負担）", "1"], ["着払い（購入者負担）", "2"]], include_blank: "選択して下さい"
+    = f.select :postage, Item.postages_i18n.invert {}, prompt: "選択してください"
     .new-wrapper__main__title.spacing
       発送元の地域
       %span{class: "require"} 必須
@@ -56,7 +59,7 @@
     .new-wrapper__main__title.spacing
       発送までの日数
       %span{class: "require"} 必須
-    = f.select :preparation_day, [["1~2日で発送", "1"], ["2~3日で発送", "2"], ["4~7日で発送", "3"]], include_blank: "選択して下さい"
+    = f.select :preparation_day, Item.preparation_days_i18n.invert {}, prompt: "選択してください"
   .new-wrapper__main
     .new-wrapper__main__subtitle
       価格（¥300〜9,999,999）

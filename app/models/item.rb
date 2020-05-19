@@ -16,4 +16,6 @@ class Item < ApplicationRecord
   end
   validates_associated :images
 
+  enum preparation_day: [:short, :middle, :long]
+  enum postage: [:including, :noincluding]
 end
