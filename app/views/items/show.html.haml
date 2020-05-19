@@ -31,7 +31,8 @@
             %tbody
               %tr
                 %th 出品者
-                %td hoge
+                %td 
+                  = @item.seller.nickname
               %tr
                 %th カテゴリー
                 %td 
@@ -69,16 +70,16 @@
                 %td
                   = @item.preparation_day_i18n
             -# 出品者にしか商品の情報編集・削除のリンクが踏めないようになっている
-      - if user_signed_in? && current_user.id == item.user_id
-        .main__showMain__contentRight__topContent__itemBox__inklist
-          = link_to confirm_items_path(@item) do
-            .main__showMain__contentRight__topContent__itemBox__linklist__buy 商品を購入
-      - else
+      - if user_signed_in? && current_user.id == @item.seller_id
         .main__showMain__contentRight__topContent__itemBox__linklist
           = link_to edit_item_path(@item) do
             .main__showMain__contentRight__topContent__itemBox__linklist__edit 商品の編集
           = link_to item_path(@item.id), method: :delete do
             .main__showMain__contentRight__topContent__itemBox__linklist__delete この商品を削除する
+      - else
+        .main__showMain__contentRight__topContent__itemBox__inklist
+          = link_to confirm_items_path(@item) do
+            .main__showMain__contentRight__topContent__itemBox__linklist__buy 商品を購入
 
         .main__showMain__contentRight__topContent__itemBox__optionalArea
           %ul
