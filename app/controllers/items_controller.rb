@@ -33,8 +33,20 @@ class ItemsController < ApplicationController
   def confirm
   end
 
+  def set_parents
+    @parents  = Category.where(ancestry: nil)
+  end
+
+  def set_children
+    @children = Category.where(ancestry: params[:parent_id])
+  end
+
+  def set_grandchildren
+    @grandchildren = Category.where(ancestry: params[:ancestry])
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :category_id, :size, :price, :preparation_day, :postage, images_attributes: [:image])
   end
 end

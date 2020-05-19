@@ -77,6 +77,8 @@ gem 'fog-aws'
 gem 'active_hash'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'ancestry'
+gem "jquery-rails"
 
 group :production do
   gem 'unicorn'

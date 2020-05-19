@@ -14,7 +14,10 @@
       %ul.header-inner__nav__left
         %li.header-inner__nav__left__item
           = link_to "#" do
-            カテゴリー
+            #category-area
+              カテゴリー
+              .category-box
+                = render partial: "shared/category"
         %li.header-inner__nav__left__item
           = link_to "#" do
             ブランド
