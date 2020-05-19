@@ -8,18 +8,19 @@ ja:
       postage:
         including: "送料込み（出品者負担）"
         noincluding: "着払い（購入者負担）"
-       
-  activerecord:
-    models:
-      item: 商品
-    attributes:
-      item:
-        images: 出品画像
-        name: 名前
-        introduction: 商品説明
-        condition: 商品の状態
-        postage: 配送料の負担
-        area: 配送元の地域
-        preparation_day: 配送までの日数
-        price: 販売価格 
-  
+
+      condition:
+        zero: "新品、未使用"
+        one: "未使用に近い"
+        two: "目立った傷や汚れなし"
+        three: "やや汚れあり"
+        four: "傷や汚れあり"
+        five: "全体的に状態が悪い"
+      size:
+        xs: "XS"
+        s: "S"
+        m: "M"
+        l: "L"
+        ll: "LL"
+        lxl: "それ以上"
+
