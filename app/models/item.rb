@@ -20,7 +20,4 @@ class Item < ApplicationRecord
   enum postage: [:including, :noincluding]
   enum condition: [:zero, :one, :two, :three, :four, :five]
   enum size: [:xs, :x, :m, :l, :ll, :lxl]
-
-  enum preparation_day: [:short, :middle, :long]
-  enum postage: [:including, :noincluding]
 end
