@@ -79,6 +79,9 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 
+gem 'rails-i18n'
+gem 'enum_help'
+
 group :production do
   gem 'unicorn'
 end

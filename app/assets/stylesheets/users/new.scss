@@ -1,6 +1,6 @@
 .user-registration__page {
   @include user-page__wrapper;
-
+  
   .header {
 
     & .logo {
@@ -40,6 +40,14 @@
         @include input-box;
       }
 
+      & .password {
+        @include input-box;
+      }
+
+      & .password_confirmation {
+        @include input-box;
+      }
+
       & .comment {
       margin: 10px 0;
       font-weight: bold;
@@ -63,7 +71,8 @@
       }
       
       & .name_kana {
-
+        display: flex;
+        justify-content: space-between;
         & .first_name_kana {
           @include input-box__medium;
         }
@@ -95,7 +104,7 @@
         }
       }
 
-      & .next-btn {
+      & .next_btn {
         @include submit-btn;
       }
     }

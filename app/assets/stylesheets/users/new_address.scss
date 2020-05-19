@@ -24,14 +24,40 @@
         margin-top: 10px;
         font-weight: bold;
       }
-        & .require {
-          @include require;
+      & .require {
+        @include require;
+      }
+      & .name {
+        display: flex;
+        justify-content: space-between;
+
+        & .first_name {
+          @include input-box__medium;
         }
+
+        & .family_name {
+          @include input-box__medium;
+        }
+      }
+      
+      & .name_kana {
+        display: flex;
+        justify-content: space-between;
+        & .first_name_kana {
+          @include input-box__medium;
+        }
+
+        & .family_name_kana {
+          @include input-box__medium;
+        }
+      }
+
       & .post_code {
         @include input-box;
       }
-      & .prefecture {
+      & #address_prefecture {
         @include input-box;
+        background-color: #FFFFFF;
       }
       & .city {
         @include input-box;
@@ -49,7 +75,7 @@
         @include input-box;
       }
       
-      & .registration-btn {
+      & .registration_btn {
         @include submit-btn;
       }
     }

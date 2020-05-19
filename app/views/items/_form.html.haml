@@ -36,7 +36,7 @@
     .new-wrapper__main__title
       サイズ
       %span{class: "any"} 任意
-    = f.select :size, [["選択してください", ""], "XS", "S", "M", "L", "LL", "それ以上"], {}
+    = f.select :size, Item.sizes_i18n.invert {}, prompt: "選択してください"
     .new-wrapper__main__title.spacing
       ブランド
       %span{class: "any"} 任意
@@ -44,7 +44,7 @@
     .new-wrapper__main__title.spacing
       商品の状態
       %span{class: "require"} 必須
-    = f.select :condition, [["選択してください", ""], "新品未使用", "未使用に近い", "目立った傷や汚れなし", "やや汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {}
+    = f.select :condition, Item.conditions_i18n.invert {}, prompt: "選択してください"
   .new-wrapper__main
     .new-wrapper__main__subtitle
       配送について
@@ -71,6 +71,6 @@
       = f.number_field :price, class: "new-wrapper__main__input-price__input", placeholder: "0"
     .spacing
     .spacing
-    = f.submit "出品する", class:"new-wrapper__main__submit"
+      = f.submit class:"new-wrapper__main__submit"
     .new-wrapper__main__caution
       禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

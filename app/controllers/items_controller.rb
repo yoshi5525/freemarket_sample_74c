@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except:[:index, :new, :create, :confirm]
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def new
@@ -23,7 +23,14 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
+
+
 
   def destroy
     @item.destroy
@@ -45,3 +52,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
+
