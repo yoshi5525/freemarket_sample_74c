@@ -13,7 +13,6 @@ class Item < ApplicationRecord
     validates :preparation_day
     validates :postage
     validates :images
-    validates :size
   end
   validates_associated :images
   enum preparation_day: [:short, :middle, :long]
