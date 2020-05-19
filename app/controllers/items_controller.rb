@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except:[:index, :new, :create, :confirm]
 
   def index
-    @items = Item.all.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def new
@@ -22,19 +23,34 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
 
+
+
   def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def show
   end
 
   def confirm
+    @default_card_information = {number: "4242424242424242", exp_month: "12", exp_year: "2020"}
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id])
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
+

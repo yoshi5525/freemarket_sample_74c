@@ -1,0 +1,23 @@
+= render "shared/header"
+
+.wrapper.clearfix
+  = render "users/side_bar"
+  .show-users-wrapper
+  .show-users-wrapper__center
+    .show-users-wrapper__center__left-content
+      - contents.each.with_index(0) do |content,i|
+        = link_to links[i], method: method[i],class: "show-users-wrapper__center__left-content__box" do
+          = content
+    .show-users-wrapper__center__right-content
+      .card-wrapper
+        .card-wrapper__title
+          クレジットカード情報照会
+        = image_tag "visa-card.png"
+        .card-wrapper__content-title
+          カード番号
+        %input{type: "text", class: "card-wrapper__input-text disabled", disabled: true, value: "**** **** **** " + "#{@default_card_information[:number].last(4)}"}
+          .card-wrapper__content-title
+            有効期限
+          %input{type: "text", class: "card-wrapper__input-text input-half disabled", disabled: true, value: @default_card_information[:exp_month]}
+          %input{type: "text", class: "card-wrapper__input-text input-half disabled", disabled: true, value: @default_card_information[:exp_year]}
+  = render "shared/footer"

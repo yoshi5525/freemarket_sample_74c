@@ -75,8 +75,13 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'active_hash'
+gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
+
+gem 'rails-i18n'
+gem 'enum_help'
+gem 'payjp'
 
 group :production do
   gem 'unicorn'
