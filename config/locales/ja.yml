@@ -30,8 +30,8 @@ ja:
     attributes:
       item:
         images: 出品画像
-        name: 名前
-        introduction: 商品説明
+        name: 商品名
+        introduction: 商品の説明
         condition: 商品の状態
         postage: 配送料の負担
         area: 配送元の地域
