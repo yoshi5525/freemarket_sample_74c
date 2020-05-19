@@ -141,7 +141,7 @@ describe Address do
     it "tel_numberが9けた未満の場合は登録できないこと" do
       address = build(:address, tel_number: "123456789")
       address.valid?
-      expect(address.errors[:tel_number]).to include("は不正な値です")
+      expect(address.errors[:tel_number]).to include("は10文字以上で入力してください")
     end
 
     it "tel_numberが11けたの場合は登録できること" do
@@ -153,7 +153,7 @@ describe Address do
     it "tel_numberが12けた以上の場合は登録できないこと" do
       address = build(:address, tel_number: "123456789012")
       address.valid?
-      expect(address.errors[:tel_number]).to include("は不正な値です")
+      expect(address.errors[:tel_number]).to include("は11文字以内で入力してください")
     end
 
 
