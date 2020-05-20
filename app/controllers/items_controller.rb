@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except:[:index, :new, :create, :confirm]
+  before_action :set_item, only:[:edit, :update, :destroy, :show]
+  before_action :move_to_index, except:[:index, :show]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -35,8 +36,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @item.destroy
     redirect_to root_path
@@ -48,6 +47,18 @@ class ItemsController < ApplicationController
   def confirm
   end
 
+  def set_parents
+    @parents  = Category.where(ancestry: nil)
+  end
+
+  def set_children
+    @children = Category.where(ancestry: params[:parent_id])
+  end
+
+  def set_grandchildren
+    @grandchildren = Category.where(ancestry: params[:ancestry])
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :condition, :area_id, :category_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
@@ -55,6 +66,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 end
 
