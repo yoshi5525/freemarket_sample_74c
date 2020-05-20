@@ -1,31 +1,31 @@
 = render partial: "shared/header"
 .main
   .main__showMain
-  .main__contentLeftqq
+    .main__contentLeftqq
     .main__showMain__contentRight
       .main__showMain__contentRight__topContent
         .main__showMain__contentRight__topContent__itemBox
-        %h1.main__showMain__contentRight__topContent__itemBox__name product1
+        %h1.main__showMain__contentRight__topContent__itemBox__name
+          = @item.name
         .main__showMain__contentRight__topContent__itemBox__itemInfo__body
           %ul.main__showMain__contentRight__topContent__itemBox__itemInfo__body--main-image
             %li
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", size:"560*346"
+              = image_tag @item.images.first.image.url, class: "image-main"
           %ul.main__showMain__contentRight__topContent__itemBox__itemInfo__body--sub-image
-            %li
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", size: "140*87"
-            %li
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png", size: "140*87"
-            %li
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", size: "140*87"
+            - @item.images.each do |f|
+              %li
+                = image_tag f.image.url,class: "image_sub"
         .main__showMain__contentRight__topContent__itemBox__itemInfo__price
           %span
-            ¥10000
+            ¥
+            = @item.price
           .main__showMain__contentRight__topContent__itemBox__itemInfo__price__itemBox__price-detail
             %span
               (税込）
             %span
               送料込み
-        .main__showMain__contentRight__topContent__itemBox__itemDetail"親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰"
+        .main__showMain__contentRight__topContent__itemBox__itemDetail
+          =  @item.introduction
         .main__showMain__contentRight__topContent__itemBox__table
           %table
             %tbody
@@ -49,20 +49,37 @@
               %tr
                 %th 商品のサイズ
                 %td
+                  - if @item.size.present?
+                    = @item.size_i18n
               %tr
                 %th 商品の状態
-                %td 未使用に近い
+                %td
+                  = @item.condition_i18n
               %tr
                 %th 配送料の負担
-                %td 送料込み(出品者負担)
+                %td
+                  = @item.postage_i18n
               %tr 
                 %th 発送元の地域
                 %td 
-                  =link_to '#' do
-                    青森県
+                  = link_to @item.area.name
               %tr 
+
                 %th 発送日の目安
-                %td 1-2日で発送
+                %td
+                  = @item.preparation_day_i18n
+            -# 出品者にしか商品の情報編集・削除のリンクが踏めないようになっている
+      - if user_signed_in? && current_user.id == item.user_id
+        .main__showMain__contentRight__topContent__itemBox__inklist
+          = link_to confirm_items_path(@item) do
+            .main__showMain__contentRight__topContent__itemBox__linklist__buy 商品を購入
+      - else
+        .main__showMain__contentRight__topContent__itemBox__linklist
+          = link_to edit_item_path(@item) do
+            .main__showMain__contentRight__topContent__itemBox__linklist__edit 商品の編集
+          = link_to item_path(@item.id), method: :delete do
+            .main__showMain__contentRight__topContent__itemBox__linklist__delete この商品を削除する
+
         .main__showMain__contentRight__topContent__itemBox__optionalArea
           %ul
             %li.main__showMain__contentRight__topContent__itemBox__optionalArea__likeBtn

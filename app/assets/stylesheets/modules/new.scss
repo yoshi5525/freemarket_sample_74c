@@ -53,33 +53,76 @@
       padding: 0 12px;
     }
     &__image-box {
+      width: 660px;
+      margin: 0 auto;
       display: flex;
-      &____previews {
-        display: block;
+      flex-wrap: wrap;
+      .js-file {
+        display: none;
       }
-      &__image-field{
-        width: 660px;
-        height: 160px;
-        margin: 16px auto;
-        background-color: #eee;
-        border: 1px dashed #ccc;
+      .preview-first {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        text-align: center;
-        position: relative;
-        cursor: pointer;
-        .fa-camera{
-          position: absolute;
-          top: 40px;
-          font-size: 20px;
+        flex-wrap: wrap;
+        height: 160px;
+        margin-bottom: 10px;
+        &__image {
+          margin: 5px;
+          height: 160px;
+          &__src {
+            width: 120px;
+            height: 120px;
+          }
         }
-        &__file {
-          display: none;
+        .remove-btn {
+          padding: 5px 0;
+          text-align: center;
+          cursor: pointer;
+          color: $main-color;
+          background-color: #f8f8f8;
         }
-        &__text{
-          padding-top: 20px;
+      }
+      .previews {
+        display: flex;
+        flex-wrap: wrap;
+        &__image {
+          margin: 5px;
+          height: 160px;
+          &__src {
+            width: 120px;
+            height: 120px;
+          }
+        }
+        .remove-btn {
+          padding: 5px 0;
+          text-align: center;
+          cursor: pointer;
+          color: $main-color;
+          background-color: #f8f8f8;
+        }
+      }
+      &__image-label {
+        max-width: 100%;
+        &__image-field{
+          width: 660px;
+          height: 160px;
+          background-color: #eee;
+          border: 1px dashed #ccc;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          text-align: center;
+          position: relative;
+          cursor: pointer;
+          .fa-camera{
+            position: absolute;
+            top: 40px;
+            font-size: 20px;
+          }
+          &__text{
+            padding-top: 20px;
+          }
         }
       }
     }
@@ -146,6 +189,8 @@
       font-size: 16px;
       border: 0px solid #000;
       cursor: pointer;
+      text-align: center;
+      line-height: 44px;
     }
     &__caution{
       font-size: 12px;

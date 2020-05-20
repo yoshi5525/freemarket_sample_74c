@@ -1,4 +1,3 @@
-
 @import "reset";
 @import "mixin/mixins";
 @import "config/colors";
@@ -19,7 +18,8 @@
 @import "users/new";
 @import "users/registration";
 @import "users/session";
-
+@import "users/devise_error.scss";
+@import "modules/flash";
 * {
   box-sizing: border-box;
 }
