@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', ()=> {
+$(function(){
   const buildFileField = (index)=> {
     if (fileIndex.length != 0) {
       const html = `<div class="js-file_group" data-index="${index}" >
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', ()=> {
     $("#image-label").attr("for", `item_images_attributes_${fileIndex[0]}_image`);
     $('.new-wrapper__main__image-box').append(buildFileField(fileIndex[0]));
   };
-  
+
   $('.new-wrapper__main__image-box').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
     const file = e.target.files[0];

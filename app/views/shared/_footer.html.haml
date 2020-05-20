@@ -56,8 +56,15 @@
       = image_tag "/logo-white.png"
   %p
     &#64;FURIMA
-= link_to new_item_path do
-  .exhibit-btn
-    %span.exhibit-btn__text
-      出品する
-    = image_tag "/icon_camera.png", class: "exhibit-btn__icon"
+- if user_signed_in?
+  = link_to new_item_path do
+    .exhibit-btn
+      %span.exhibit-btn__text
+        出品する
+      = image_tag "/icon_camera.png", class: "exhibit-btn__icon"
+- else
+  = link_to new_user_session_path do
+    .exhibit-btn
+      %span.exhibit-btn__text
+        出品する
+      = image_tag "/icon_camera.png", class: "exhibit-btn__icon"

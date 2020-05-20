@@ -13,6 +13,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer      :postage,         null: false
       # t.references   :seller,          null: false, foreign_key: true
       # t.references   :buyer,                        foreign_key: true
+      t.integer      :status,          null: false, default: 0
       t.timestamps
     end
   end
