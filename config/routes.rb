@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     resources :images, only: [:new, :create] 
   end
   
-  resources :cards, only: [:new, :create, :destroy, :show]
+  resources :cards, only: [:new, :create, :destroy, :show] do
+    collection do
+      post 'pay'
+    end
+  end
   
   resources :users, only: [:new, :show] do
     collection do

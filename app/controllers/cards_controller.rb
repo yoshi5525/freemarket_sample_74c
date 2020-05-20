@@ -3,21 +3,16 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    #current_user.idでログインしてるユーザーのみ登録ができるようにしてます
     card = Card.where(user_id: current_user.id)
-    #カード登録がまだならshowページへ飛ぶ
-    redirect_to action: "show" if card.exists?
+    redirect_to card_path(current_user.id) if card.exists?
   end
 
-  def create #payjpとCardのデータベース作成
+  def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
-       # paramsの中にjsで作った'payjpTokenが存在するか確かめる
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-        description: '登録テスト', #なくてもOK
-        email: current_user.email, #なくてもOK
         card: params['payjp-token'],
         metadata: {user_id: current_user.id}
         ) 

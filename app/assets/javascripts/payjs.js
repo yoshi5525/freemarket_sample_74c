@@ -11,7 +11,7 @@ document.addEventListener(
           cvc: document.getElementById("cvc").value,
           exp_month: document.getElementById("exp_month").value,
           exp_year: document.getElementById("exp_year").value
-        }; 
+        };
         Payjp.createToken(card, (status, response) => {
           // カード情報をpayjpに送りカードトークンを(response.id)を受け取る。
           if (status === 200) {  // 正常な値の場合 
