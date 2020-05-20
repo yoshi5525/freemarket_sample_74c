@@ -22,9 +22,6 @@ ja:
         l: "L"
         ll: "LL"
         lxl: "それ以上"
-    submit:
-      create: "出品する"
-      update: "更新する"
 
   activerecord:
     errors:
