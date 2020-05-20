@@ -22,6 +22,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new_address
+    if @address == nil
+      redirect_to root_path and return
+    end
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new
   end
