@@ -80,7 +80,6 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'ancestry'
-gem "jquery-rails"
 gem 'stateful_enum'
 
 group :production do
