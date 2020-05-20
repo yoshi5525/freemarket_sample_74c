@@ -22,3 +22,6 @@ ja:
         l: "L"
         ll: "LL"
         lxl: "それ以上"
+      status:
+        saling_item: "出品中"
+        sold_item: "売り切れ"

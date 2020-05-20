@@ -71,6 +71,9 @@
       = f.number_field :price, class: "new-wrapper__main__input-price__input", placeholder: "0"
     .spacing
     .spacing
-      = f.submit class:"new-wrapper__main__submit"
+      - if user_signed_in?
+        = f.submit class:"new-wrapper__main__submit"
+      - else
+        = link_to "投稿する", new_user_session_path, class: "new-wrapper__main__submit"
     .new-wrapper__main__caution
       禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

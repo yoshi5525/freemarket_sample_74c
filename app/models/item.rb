@@ -12,15 +12,17 @@ class Item < ApplicationRecord
     validates :price, numericality: { only_integer: true , greater_than: 299, less_than: 10000000 }
     validates :preparation_day
     validates :postage
+    validates :status
     validates :images
-    validates :size
   end
   validates_associated :images
   enum preparation_day: [:short, :middle, :long]
   enum postage: [:including, :noincluding]
   enum condition: [:zero, :one, :two, :three, :four, :five]
   enum size: [:xs, :x, :m, :l, :ll, :lxl]
-
-  enum preparation_day: [:short, :middle, :long]
-  enum postage: [:including, :noincluding]
+  enum status: [:saling_item, :sold_item] do
+    event :purchase do
+      transition :saling_item => :sold_item
+    end
+  end
 end
