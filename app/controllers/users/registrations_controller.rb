@@ -12,10 +12,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @address = @user.addresses.build
+    render :new_address
+  end
+
+  def new_address
+    if @address == nil
+      redirect_to root_path and return
+    end
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new
+  end
+  
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.addresses.build(@address.attributes)
     @user.save
-    redirect_to root_path
+    @address.user_id = @user.id
+    
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
   end
 
   # GET /resource/edit
@@ -64,6 +90,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def address_params
-    params.require(:address).permit(:post_code, :prefecture, :city, :address, :apartment, :tel_number)
+    params.require(:address).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :post_code, :prefecture, :city, :address, :apartment, :tel_number)
   end
 end

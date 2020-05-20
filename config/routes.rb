@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
     resources :images, only: [:new, :create]
   end
-
+  get 'users', to: 'users#index'
   resources :users, only: [:new, :show] do
     resources :cards, only: [:new]
     collection do
