@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'set_children'
     get 'set_grandchildren'
     end
-    resources :images, only: [:new, :create] 
+    resources :images, only: [:new, :create]
   end
 
   resources :users, only: [:new, :show] do
