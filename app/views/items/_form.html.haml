@@ -1,3 +1,4 @@
+#request{action: request.path}
 = form_for @item do |f|
   .new-wrapper__main
     .new-wrapper__main__title
@@ -32,7 +33,7 @@
     .new-wrapper__main__title
       カテゴリー
       %span{class: "require"} 必須
-    -# = f.select :category, [["選択してください", ""]"選択肢1", "選択肢2", 選択肢3"], {}
+    #category-select
     .new-wrapper__main__title
       サイズ
       %span{class: "any"} 任意
