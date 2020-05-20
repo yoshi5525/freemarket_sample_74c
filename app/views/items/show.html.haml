@@ -35,16 +35,16 @@
                   = @item.seller.nickname
               %tr
                 %th カテゴリー
-                %td 
+                %td
                   =link_to '#' do
-                    レディース
+                    = @item.category.parent.parent.name
                   %br/
                   =link_to '#' do
-                    トップス
+                    = @item.category.parent.name
                   %br/
                   =link_to '#' do
-                    Tシャツ/カットソー(半袖/袖なし)
-              %tr 
+                    = @item.category.name
+              %tr
                 %th ブランド
                 %td
               %tr
