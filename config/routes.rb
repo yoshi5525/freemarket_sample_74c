@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   resources :items do
     collection do
     get 'confirm'
+    get 'set_parents'
+    get 'set_children'
+    get 'set_grandchildren'
     end
-    resources :images, only: [:new, :create] 
+    resources :images, only: [:new, :create]
   end
 
   get 'users', to: 'users#index'
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show] do
     resources :cards, only: [:new]
     collection do
-      get "user_logout"
+      get 'user_logout'
     end
   end
 end

@@ -70,7 +70,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
-
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'carrierwave'
@@ -80,6 +79,7 @@ gem 'active_hash'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'ancestry'
 gem 'stateful_enum'
 
 group :production do

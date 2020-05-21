@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except:[:index, :new, :create, :confirm]
+  before_action :set_item, only:[:edit, :update, :destroy, :show]
   before_action :move_to_index, except:[:index, :show]
 
   def index
@@ -20,7 +20,12 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
+    set_item
+    if @item.seller_id != current_user.id
+      redirect_to root_path, alert: "不正なアクセスです。"
+    end
   end
 
   def update
@@ -42,9 +47,21 @@ class ItemsController < ApplicationController
   def confirm
   end
 
+  def set_parents
+    @parents  = Category.where(ancestry: nil)
+  end
+
+  def set_children
+    @children = Category.where(ancestry: params[:parent_id])
+  end
+
+  def set_grandchildren
+    @grandchildren = Category.where(ancestry: params[:ancestry])
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :size, :price, :preparation_day, :postage, :brand, images_attributes: [:image, :_destroy, :id])
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :category_id, :size, :price, :preparation_day, :postage, :brand, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_item
