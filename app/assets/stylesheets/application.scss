@@ -20,6 +20,8 @@
 @import "users/session";
 @import "users/devise_error.scss";
 @import "modules/flash";
+@import "modules/error_messages";
+
 * {
   box-sizing: border-box;
 }

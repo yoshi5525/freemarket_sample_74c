@@ -20,7 +20,12 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def edit
+    set_item
+    if @item.seller_id != current_user.id
+      redirect_to root_path, alert: "不正なアクセスです。"
+    end
   end
 
   def update
@@ -56,7 +61,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :condition, :area_id, :category_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id])
+    params.require(:item).permit(:name, :introduction, :condition, :area_id, :category_id, :size, :price, :preparation_day, :postage, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_item

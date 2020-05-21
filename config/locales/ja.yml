@@ -8,6 +8,7 @@ ja:
       postage:
         including: "送料込み（出品者負担）"
         noincluding: "着払い（購入者負担）"
+
       condition:
         zero: "新品、未使用"
         one: "未使用に近い"
@@ -56,6 +57,16 @@ ja:
         address: "番地"
         apartment: "建物名、部屋番号"
         tel_number: "お届け先の電話番号"
+      item:
+        images: 出品画像
+        name: 商品名
+        introduction: 商品の説明
+        condition: 商品の状態
+        postage: 配送料の負担
+        area: 配送元の地域
+        preparation_day: 配送までの日数
+        price: 販売価格 
+        size: サイズ
   date:
     abbr_day_names:
     - 日
