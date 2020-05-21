@@ -8,7 +8,7 @@
       クレジットカード情報入力
     .registration-box
       .registration-box__form
-        = form_with model: @card, url: cards_path, local: true, html: { name: 'inputForm' } do |f|
+        = form_with model: @card, url: cards_path, local: true, html: { id: 'charge-form',name: 'inputForm' } do |f|
           .card-input
             %p.card-number
               カード番号

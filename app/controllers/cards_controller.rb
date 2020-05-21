@@ -18,7 +18,7 @@ class CardsController < ApplicationController
         ) 
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to action: "show"
+        redirect_to card_path(@card)
         flash[:notice] = 'クレジットカードの登録が完了しました'
       else
         redirect_to action: "pay"
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def delete #PayjpとCardデータベースを削除
+  def destroy
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
@@ -36,7 +36,7 @@ class CardsController < ApplicationController
       customer.delete
       card.delete
     end
-      redirect_to action: "new"
+    redirect_to root_path
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す

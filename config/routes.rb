@@ -13,14 +13,10 @@ Rails.application.routes.draw do
     collection do
     get 'confirm'
     end
-    member do
-      get "buy"
-      get "pay"
-    end
     resources :images, only: [:new, :create] 
   end
   
-  resources :cards, only: [:new, :create, :destroy, :show] do
+  resources :cards, only: [:new, :create, :show, :destroy] do
     collection do
       post 'pay'
     end
