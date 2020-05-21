@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
+
   resources :items do
     collection do
     get 'confirm'
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
     end
     resources :images, only: [:new, :create]
   end
+
   get 'users', to: 'users#index'
+
   resources :users, only: [:new, :show] do
     resources :cards, only: [:new]
     collection do

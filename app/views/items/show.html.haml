@@ -47,6 +47,8 @@
               %tr
                 %th ブランド
                 %td
+                  - if @item.brand.present?
+                    = @item.brand_i18n
               %tr
                 %th 商品のサイズ
                 %td

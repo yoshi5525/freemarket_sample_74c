@@ -140,6 +140,9 @@
     #item_category {
       @include new-item-select;
     }
+    #item_brand {
+      @include new-item-select;
+    }
     #item_size {
       @include new-item-select;
     }
