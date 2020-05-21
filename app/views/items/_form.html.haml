@@ -40,7 +40,8 @@
     .new-wrapper__main__title.spacing
       ブランド
       %span{class: "any"} 任意
-    -# = f.text_field :brand, class: "new-wrapper__main__input-text", placeholder: "例）シャネル"
+    = f.select :brand, Item.brands_i18n.invert {}, prompt: "選択してください"
+  .new-wrapper__main
     .new-wrapper__main__title.spacing
       商品の状態
       %span{class: "require"} 必須

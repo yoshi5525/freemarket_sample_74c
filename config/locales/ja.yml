@@ -8,6 +8,13 @@ ja:
       postage:
         including: "送料込み（出品者負担）"
         noincluding: "着払い（購入者負担）"
+      brand:
+        chanel: "シャネル"
+        nike: "ナイキ"
+        LouisVuitton: "ルイ ヴィトン"
+        supreme: "シュプリーム"
+        adidas: "アディダス"
+        ex: "その他"
       condition:
         zero: "新品、未使用"
         one: "未使用に近い"
