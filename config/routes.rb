@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
+
   resources :items do
     collection do
     get 'confirm'
+    get 'set_parents'
+    get 'set_children'
+    get 'set_grandchildren'
     end
-    resources :images, only: [:new, :create] 
+    resources :images, only: [:new, :create]
   end
   
   resources :cards, only: [:new, :create, :show, :destroy] do
@@ -22,9 +26,12 @@ Rails.application.routes.draw do
     end
   end
   
+
+  get 'users', to: 'users#index'
+
   resources :users, only: [:new, :show] do
     collection do
-      get "user_logout"
+      get 'user_logout'
     end
   end
 end
