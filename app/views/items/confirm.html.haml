@@ -10,12 +10,12 @@
       .check-buy__content__item__inner
         .check-buy__content__item__inner__box
           %h3.check-buy__content__item__inner__box__image
-            = image_tag "/hat.png"
+            = image_tag @item.images.first.image.url, class: "image-main"
           .check-buy__content__item__inner__box__detail
             %p.check-buy__content__item__inner__box__detail__name
-              オシャレな帽子
+              = @item.name
             %p.check-buy__content__item__inner__box__detail__price
-              ¥620 （税込）送料込み
+              = "¥#{@item.price.to_s(:delimited)} (税込)"
 
     %section.check-buy__content__item
       .check-buy__content__item__inner
@@ -25,15 +25,26 @@
               .check-buy__content__item__inner__form__price__box__head
                 支払い金額
               .check-buy__content__item__inner__form__price__box__body
-                ¥620
+                
 
           %section.check-buy__content__item__inner__form__payment
             .check-buy__content__item__inner__form__payment__inner
               %h3.check-buy__content__item__inner__form__payment__box__title
                 支払い方法
-              = link_to "#" do
+              - if @default_card_information.blank?
+                %br /
+              - else
                 %p.check-buy__content__item__inner__form__payment__box__title__under
-                  登録してください
+                  = "**** **** **** " + @default_card_information.last4
+                  %br
+                    - exp_month = @default_card_information.exp_month.to_s
+                    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+              .card_box
+                = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?465897195", size: "49×15", alt: "visa_pic", class: "visa_area"
+            .change_text_color_blue
+              = link_to "変更する", class: ""
+              -# = fa_icon 'chevron-right'
 
           %section.check-buy__content__item__inner__form__delivery
             .check-buy__content__item__inner__form__delivery__inner
@@ -41,10 +52,11 @@
                 配送先
               = link_to "#" do
                 %p.check-buy__content__item__inner__form__delivery__box__title__under
-                  登録してください
+
 
           %section.check-buy__content__item__inner__form__fix
             %button.check-buy__content__item__inner__form__fix__btn{type: "submit"}
-              購入する
+              = form_tag(action: :pay, method: :post) do
+                購入する
 
 = render partial: "shared/user_footer"
