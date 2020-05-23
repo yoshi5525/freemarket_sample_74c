@@ -166,3 +166,13 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+@mixin card-title {
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: $white-color;
+  margin-bottom: 2px;
+}

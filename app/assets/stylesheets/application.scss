@@ -12,12 +12,15 @@
 @import "modules/footer";
 @import "items";
 @import "modules/new";
+@import "modules/category";
 @import "users/create_address";
 @import "users/new_address";
 @import "users/new";
 @import "users/registration";
 @import "users/session";
 @import "users/devise_error.scss";
+@import "modules/flash";
+@import "modules/error_messages";
 * {
   box-sizing: border-box;
 }

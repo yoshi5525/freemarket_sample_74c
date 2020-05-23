@@ -1,15 +1,15 @@
-.login-page
-  = render "shared/logo"
-  .main-block
-    .main-block__top
-      %h3 アカウントをお持ちでない方はこちら
-      .new-registration__link
-        = link_to new_user_path do
-          .new-registration__link__text
-            新規会員登録
-    = form_with model: resource, url: session_path(resource_name) do |f|
-      .main-block__login-form
-        = f.email_field :email, class: "email", placeholder: "メールアドレス"
-        = f.password_field :password, class: "password", placeholder: "パスワード"
-        = f.submit "ログイン", class: "login_btn", value: "ログイン"
-  = render "shared/user_footer"
+= form_with(model: resource, local: true, url: session_path(resource_name)) do |f|
+  .login-page
+    = render "shared/logo"
+    .main-block
+      .main-block__top
+        %h3 アカウントをお持ちでない方はこちら
+        .new-registration__link
+          = link_to new_user_path do
+            .new-registration__link__text
+              新規会員登録
+        .main-block__login-form
+          = f.email_field :email, class: "email", placeholder: "メールアドレス"
+          = f.password_field :password, class: "password", placeholder: "パスワード"
+          = f.submit "ログイン", class: "login_btn"
+    = render "shared/user_footer"

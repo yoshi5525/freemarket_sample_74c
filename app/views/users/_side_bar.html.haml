@@ -5,10 +5,9 @@
       = link_to "お知らせ", "#", class: "side-bar__navi__list__menu"
       = link_to "やることリスト", "#", class: "side-bar__navi__list__menu"
     %h4.side-bar__navi__title
-      クレジットカード
+      支払い方法
     .side-bar__navi__list
-      = link_to "クレジットカード登録", "#", class: "side-bar__navi__list__menu"
-      = link_to "クレジットカード情報変更", "#", class: "side-bar__navi__list__menu"
+      = link_to "クレジットカード登録・削除", new_card_path, class: "side-bar__navi__list__menu"
     %h4.side-bar__navi__title
       設定
     .side-bar__navi__list

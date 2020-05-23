@@ -9,22 +9,27 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
+
   resources :items do
-    collection do
-    get 'confirm'
+    member do
+      get 'confirm'
     end
-    resources :images, only: [:new, :create] 
-  end
-  
-  resources :cards, only: [:new, :create, :show, :destroy] do
-    collection do
+    member do
+      get 'set_parents'
+      get 'set_children'
+      get 'set_grandchildren'
       post 'pay'
     end
+    resources :images, only: [:new, :create]
   end
-  
+
+  resources :cards, only: [:new, :create, :show, :destroy]
+
+  get 'users', to: 'users#index'
+
   resources :users, only: [:new, :show] do
     collection do
-      get "user_logout"
+      get 'user_logout'
     end
   end
 end
