@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only:[:edit, :update, :destroy, :show]
+  before_action :set_item, only:[:edit, :update, :destroy, :show, :confirm, :pay]
   before_action :move_to_index, except:[:index, :show]
-
+  
   def index
     @items = Item.order(created_at: :desc)
   end
@@ -46,7 +46,20 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    @default_card_information = {number: "4242424242424242", exp_month: "12", exp_year: "2020"}
+    card = Card.where(user_id: current_user.id).first
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @default_card_information = customer.cards.retrieve(card.card_id)
+  end
+
+  def pay
+    @card = Card.where(user_id: current_user.id).first
+    Payjp::Charge.create(
+      amount: @item.price,
+      customer: @card.customer_id, 
+      currency: 'jpy'
+    )
+    @item.update(buyer_id: current_user.id)
+    redirect_to root_path
   end
 
   def set_parents

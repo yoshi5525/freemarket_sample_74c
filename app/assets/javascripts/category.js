@@ -1,6 +1,6 @@
 $(function(){
   const request = $("#request").attr("action");
-  if(request.indexOf("new") != -1 || request.indexOf("edit") != -1){
+  if(request.indexOf("new") != -1 || request.indexOf("new") != 0 || request.indexOf("edit") != -1 || request.indexOf("edit") != 0){
     $.ajax({
       url: "/items/set_parents"
     }).done(function(data){
