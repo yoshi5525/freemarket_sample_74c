@@ -47,7 +47,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
   gem 'rspec-rails'
-  gem 'factory_bot_rails' 
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -85,6 +85,7 @@ gem 'stateful_enum'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'payjp'
+gem 'dotenv-rails'
 
 group :production do
   gem 'unicorn'
