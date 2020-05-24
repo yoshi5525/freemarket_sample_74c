@@ -62,27 +62,29 @@
                 %th 配送料の負担
                 %td
                   = @item.postage_i18n
-              %tr 
+              %tr
                 %th 発送元の地域
-                %td 
+                %td
                   = link_to @item.area.name
-              %tr 
+              %tr
 
                 %th 発送日の目安
                 %td
                   = @item.preparation_day_i18n
-            -# 出品者にしか商品の情報編集・削除のリンクが踏めないようになっている
+      -# 出品者にしか商品の情報編集・削除のリンクが踏めないようになっている
       - if user_signed_in? && current_user.id == @item.seller_id
         .main__showMain__contentRight__topContent__itemBox__linklist
           = link_to edit_item_path(@item) do
             .main__showMain__contentRight__topContent__itemBox__linklist__edit 商品の編集
           = link_to item_path(@item.id), method: :delete do
             .main__showMain__contentRight__topContent__itemBox__linklist__delete この商品を削除する
+      - elsif @item.buyer_id.present?
+        .main__showMain__contentRight__topContent__itemBox__inklist
+          .main__showMain__contentRight__topContent__itemBox__linklist__sold この商品は販売済みです
       - else
         .main__showMain__contentRight__topContent__itemBox__inklist
           = link_to confirm_item_path(@item) do
             .main__showMain__contentRight__topContent__itemBox__linklist__buy 商品を購入
-
         .main__showMain__contentRight__topContent__itemBox__optionalArea
           %ul
             %li.main__showMain__contentRight__topContent__itemBox__optionalArea__likeBtn
@@ -104,14 +106,14 @@
               %br/
               不快な言葉遣い等は退会処分となる事があります。
             %button.main__showMain__contentRight__topContent__commentBox__commentContents__commentBtn{name: "button", typ: "submit"}
-              %i.fa.fa-comment 
+              %i.fa.fa-comment
               コメントする
           %ul.main__showMain__contentRight__links
-            %li 
+            %li
               =link_to  '#' do
                 %i.fa.fa-angle-left
                 %span
-                  前の商品 
+                  前の商品
             %li
               =link_to  '#' do
                 %span

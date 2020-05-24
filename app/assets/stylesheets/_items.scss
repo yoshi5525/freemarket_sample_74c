@@ -123,40 +123,24 @@ li {
           }
           &__linklist {
             &__edit {
+              @include item-details-btn;
               background-color: #3CCACE;
-              width: 100%;
-              line-height: 48px;
-              margin-bottom: 16px;
-              color: #fff;
-              font-size: 14px;
               cursor: pointer;
-              font-weight: bold;
-              margin: 16px 0 16px 0;
-              text-align: center;
               }
             &__delete {
+              @include item-details-btn;
               background-color: #aaa;
-              width: 100%;
-              line-height: 48px;
-              margin-bottom: 16px;
-              color: #fff;
-              font-size: 14px;
               cursor: pointer;
-              font-weight: bold;
-              margin: 16px 0 16px 0;
-              text-align: center;
+            }
+            &__sold {
+              @include item-details-btn;
+              background-color: #aaa;
+              cursor: not-allowed;
             }
             &__buy {
+              @include item-details-btn;
               background-color:  #3CCACE;
-              width: 100%;
-              line-height: 48px;
-              margin-bottom: 16px;
               cursor: pointer;
-              color: #fff;
-              font-size: 14px;
-              font-weight: bold;
-              margin: 16px 0 16px 0;
-              text-align: center;
             }
           }
           &__optionalArea {
@@ -186,15 +170,11 @@ li {
             }
           }
         }
-      
-      
       &__commentBox {
         padding: 24px;
         background-color: #fff;
         margin: 10px 0;
         text-align: center;
-      } &__commentBox__commentContents {
-      
       }
       &__commentBox__commentContents__noticeMsg {
         padding: 8px;
@@ -223,9 +203,6 @@ li {
     margin: 0;
     padding: 0;
   }
-
-
-
 }
 
 input {
