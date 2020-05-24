@@ -168,6 +168,17 @@
   cursor: pointer;
 }
 
+@mixin item-details-btn {
+  width: 100%;
+  line-height: 48px;
+  margin-bottom: 16px;
+  color: $white-color;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 16px 0 16px 0;
+  text-align: center;
+}
+
 @mixin card-title {
   height: 80px;
   line-height: 80px;
