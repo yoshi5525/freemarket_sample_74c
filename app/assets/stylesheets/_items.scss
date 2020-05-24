@@ -93,14 +93,11 @@ li {
                 display: flex;
                 justify-content: center;
                 margin-top: 10px;
-                & li{
-                  width: 25%;
-                  margin: 0 10px 0 0;
-                }
+                flex-wrap:wrap;
                 & li img {
                   object-fit: cover;
                   height: 87px;
-                  width: 140px;
+                  width: 130px;
                 }
               }
             }
