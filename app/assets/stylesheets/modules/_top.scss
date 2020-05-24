@@ -260,3 +260,23 @@ img.google-play {
     }
   }
 }
+
+.sold-out-display{
+  width: 0;
+  height: 0;
+  border-top: 60px solid $main-color ;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid $main-color ;
+  z-index:100;
+  position: relative;
+  top:-245px;
+  &__inner{
+    transform: rotate(-45deg);
+    font-size: 26px;
+    margin:-30px 0px 0px -55px;
+    color: $white-color;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+}

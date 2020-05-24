@@ -146,6 +146,18 @@ li {
               margin: 16px 0 16px 0;
               text-align: center;
             }
+            &__sold {
+              background-color: #aaa;
+              width: 100%;
+              line-height: 48px;
+              margin-bottom: 16px;
+              cursor: not-allowed;
+              color: #fff;
+              font-size: 14px;
+              font-weight: bold;
+              margin: 16px 0 16px 0;
+              text-align: center;
+            }
             &__buy {
               background-color:  #3CCACE;
               width: 100%;

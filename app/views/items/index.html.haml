@@ -119,4 +119,8 @@
                       0
                   %p
                     (税込)
+              -if item.buyer_id.present?
+                .sold-out-display
+                  .sold-out-display__inner
+                    SOLD
 = render partial: "shared/footer"
