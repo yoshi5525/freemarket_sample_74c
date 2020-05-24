@@ -82,7 +82,7 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
     @item.update(buyer_id: current_user.id)
-    redirect_to item_path(@item)
+    redirect_to root_path
   end
 
   def set_parents
