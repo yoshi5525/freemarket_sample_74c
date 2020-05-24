@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    member do
+      get 'confirm'
+    end
     collection do
-    get 'confirm'
-    get 'set_parents'
-    get 'set_children'
-    get 'set_grandchildren'
+      get 'set_parents'
+      get 'set_children'
+      get 'set_grandchildren'
     end
     resources :images, only: [:new, :create]
   end
