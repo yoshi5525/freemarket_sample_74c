@@ -46,20 +46,43 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    card = Card.where(user_id: current_user.id).first
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @default_card_information = customer.cards.retrieve(card.card_id)
+    if Card.where(user_id: current_user.id).blank?
+      flash[:alert] = "クレジットカードを登録してください"
+      redirect_to new_card_path
+    else
+      set_address
+      card = Card.where(user_id: current_user.id).first
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+      @default_card_information = customer.cards.retrieve(card.card_id)
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_image = "/visa.svg"
+      when "JCB"
+        @card_image = "/jcb.svg"
+      when "MasterCard"
+        @card_image = "/master-card.svg"
+      when "American Express"
+        @card_image = "/american_express.svg"
+      when "Diners Club"
+        @card_image = "/dinersclub.svg"
+      when "Discover"
+        @card_image = "/discover.svg"
+      end
+    end
   end
 
   def pay
-    @card = Card.where(user_id: current_user.id).first
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     Payjp::Charge.create(
       amount: @item.price,
-      customer: @card.customer_id, 
+      customer: card.customer_id,
       currency: 'jpy'
     )
     @item.update(buyer_id: current_user.id)
-    redirect_to root_path
+    redirect_to item_path(@item)
   end
 
   def set_parents
@@ -81,6 +104,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_address
+    @address = Address.find_by(user_id: current_user.id)
+    @area = Area.find(@address.prefecture)
   end
 
   def move_to_index

@@ -1,21 +1,28 @@
-.credit_card__list
-  .credit_card__list__title
-    支払い方法
-  .credit_card__list__frame
-    .credit_card_info
-      .credit_card_info__brand
-        = image_tag "/visa.svg", size: "30x30"
-      .credit_card_info__numbers
-        .number
-          = "**** **** **** " + @default_card_information.last4
-        .expiration_date
-          .expiration_date__title
-            有効期限
-          .expiration_date__info
-          - exp_month = @default_card_information.exp_month.to_s
-          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-          = exp_month + " / " + exp_year
-    .destroy__function
-      .destroy__function__link
-        = link_to card_path, method: :delete, class: "destroy__btn" do 
-          削除する
+= render "shared/header"
+
+.wrapper.clearfix
+  = render "users/side_bar"
+
+  .credit_card__list
+    .credit_card__list__title
+      支払い方法
+    .credit_card__list__frame
+      .credit_card_info
+        .credit_card_info__brand
+          = image_tag "#{@card_image}",width:'30',height:'30'
+        .credit_card_info__numbers
+          .number
+            = "**** **** **** " + @default_card_information.last4
+          .expiration_date
+            .expiration_date__title
+              有効期限
+            .expiration_date__info
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+        .destroy__function
+          .destroy__function__link
+            = link_to card_path, method: :delete, class: "destroy__btn" do
+              削除する
+
+= render "shared/footer"

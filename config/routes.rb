@@ -13,18 +13,18 @@ Rails.application.routes.draw do
   resources :items do
     member do
       get 'confirm'
+      post 'pay'
     end
     collection do
     get 'set_parents'
     get 'set_children'
     get 'set_grandchildren'
-    post 'pay'
     end
     resources :images, only: [:new, :create]
   end
-  
+
   resources :cards, only: [:new, :create, :show, :destroy]
-  
+
 
   get 'users', to: 'users#index'
 

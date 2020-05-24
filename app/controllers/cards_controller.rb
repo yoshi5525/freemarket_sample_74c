@@ -3,8 +3,13 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    card = Card.where(user_id: current_user.id)
-    redirect_to card_path(current_user.id) if card.exists?
+    if user_signed_in?
+      card = Card.where(user_id: current_user.id)
+      redirect_to card_path(current_user.id) if card.exists?
+    else
+      flash[:alert] = "ログインしてください"
+      redirect_to new_user_session_path
+    end
   end
 
   def create
@@ -47,6 +52,21 @@ class CardsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+    @card_brand = @default_card_information.brand
+    case @card_brand
+    when "Visa"
+      @card_image = "/visa.svg"
+    when "JCB"
+      @card_image = "/jcb.svg"
+    when "MasterCard"
+      @card_image = "/master-card.svg"
+    when "American Express"
+      @card_image = "/american_express.svg"
+    when "Diners Club"
+      @card_image = "/dinersclub.svg"
+    when "Discover"
+      @card_image = "/discover.svg"
     end
   end
 end
