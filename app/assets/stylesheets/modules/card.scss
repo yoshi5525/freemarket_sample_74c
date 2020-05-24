@@ -1,13 +1,7 @@
 .card-main {
   @include main-bar;
   .registration-title {
-    height: 80px;
-    line-height: 80px;
-    font-size: 20px;
-    font-weight: bolder;
-    text-align: center;
-    background-color: $white-color;
-    margin-bottom: 2px;
+    @include card-title;
   }
   .registration-box {
     background-color: $white-color;
@@ -93,6 +87,35 @@
         color: $white-color;
         cursor: pointer;
       }
+    }
+  }
+}
+
+.credit_card__list {
+  @include main-bar;
+  &__title {
+    @include card-title;
+  }
+  &__frame {
+    background-color: $white-color;
+    padding: 50px 50px;
+  }
+  .credit_card_info {
+    width: 400px;
+    margin: 0 auto;
+  }
+  .expiration_date {
+    margin-bottom: 20px;
+  }
+  .destroy__function__link {
+    width: 400px;
+    height: 50px;
+    background-color: $main-color;
+    cursor: pointer;
+    text-align: center;
+    .destroy__btn {
+      color: $white-color;
+      line-height: 50px;
     }
   }
 }

@@ -154,6 +154,7 @@
   margin: 50px 0;
   color: #FFFFFF;
   font-size: 15px;
+  cursor: pointer;
 }
 
 @mixin new-item-select {
@@ -165,4 +166,14 @@
   margin-left: 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+@mixin card-title {
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: $white-color;
+  margin-bottom: 2px;
 }

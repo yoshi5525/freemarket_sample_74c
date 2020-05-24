@@ -19,7 +19,7 @@
 
     %section.check-buy__content__item
       .check-buy__content__item__inner
-        %form.check-buy__content__item__inner__form
+        .check-buy__content__item__inner__form
           %ul.check-buy__content__item__inner__form__price
             %li.check-buy__content__item__inner__form__price__box
               .check-buy__content__item__inner__form__price__box__head
@@ -41,22 +41,26 @@
                     - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                     = exp_month + " / " + exp_year
               .card_box
-                = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?465897195", size: "49×15", alt: "visa_pic", class: "visa_area"
+                = image_tag "#{@card_image}",width:'30',height:'30'
             .change_text_color_blue
-              = link_to "変更する", class: ""
-              -# = fa_icon 'chevron-right'
 
           %section.check-buy__content__item__inner__form__delivery
             .check-buy__content__item__inner__form__delivery__inner
               %h3.check-buy__content__item__inner__form__delivery__box__title
                 配送先
-              = link_to "#" do
                 %p.check-buy__content__item__inner__form__delivery__box__title__under
-
+                = "〒" + @address.post_code
+                %br
+                = @area.name
+                = @address.city
+                = @address.address
+                = @address.apartment
+                %br
+                = @address.tel_number
 
           %section.check-buy__content__item__inner__form__fix
-            %button.check-buy__content__item__inner__form__fix__btn{type: "submit"}
-              = form_tag(action: :pay, method: :post) do
-                購入する
+            .check-buy__content__item__inner__form__fix__btn
+              = form_with(url: pay_item_path, local: true, method: :post) do |f|
+                = f.submit "購入する"
 
 = render partial: "shared/user_footer"
