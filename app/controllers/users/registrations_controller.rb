@@ -42,21 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
-  def add_address
-    @address = Address.new
-  end
-
-  def update_address
-    @address = Address.new(address_params)
-    unless @address.valid?
-      flash.now[:alert] = @address.errors.full_messages
-      render :edit_address and return
-    end
-    @address.user_id = current_user.id
-    @address.save
-    redirect_to user_path(current_user)
-  end
-
   # GET /resource/edit
   # def edit
   #   super
