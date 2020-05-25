@@ -20,11 +20,22 @@ class ItemsController < ApplicationController
     end
   end
 
-
   def edit
     if @item.seller_id != current_user.id
       redirect_to root_path, alert: "不正なアクセスです。"
     end
+
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+    @category_parent_array = []
+    @category_parent_array = Category.where(ancestry: nil)
+
+    @category_children_array = []
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
+
+    @category_grandchildren_array = []
+    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
   end
 
   def update
@@ -34,8 +45,6 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
-
 
   def destroy
     @item.destroy

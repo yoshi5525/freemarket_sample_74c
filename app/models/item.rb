@@ -23,9 +23,5 @@ class Item < ApplicationRecord
   enum brand: [:chanel, :nike, :LouisVuitton, :supreme, :adidas, :ex]
   enum condition: [:zero, :one, :two, :three, :four, :five]
   enum size: [:xs, :x, :m, :l, :ll, :lxl]
-  enum status: [:saling_item, :sold_item] do
-    event :purchase do
-      transition :saling_item => :sold_item
-    end
-  end
+  enum status: [:saling_item, :sold_item]
 end
