@@ -102,7 +102,14 @@
     .new-wrapper__main__title
       カテゴリー
       %span{class: "require"} 必須
-    #category-select
+
+    - if @item.category.present?
+      #category-preview
+        = f.select :category, options_for_select( @category_parent_array.map{|c|[c[:name], c[:id], {}]}, @item.category.parent.parent.id), {}, {class: 'new-wrapper__main__input-select select-parent', id: 'select-parent', style: 'margin-bottom: 10px;'}
+        = f.select :category, options_for_select( @category_children_array.map{|c|[c[:name], c[:id], {}]}, @item.category.parent.id), {}, {class: 'new-wrapper__main__input-select select-child', id: 'select-parent', style: 'margin-bottom: 10px;'}
+        = f.select :category, options_for_select( @category_grandchildren_array.map{|c|[c[:name], c[:id], {}]}, @item.category.id), {}, {class: 'new-wrapper__main__input-select select-grandchild', id: 'item_category_id'}
+    - else
+      #category-select
     .new-wrapper__main__title
       サイズ
       %span{class: "any"} 任意
