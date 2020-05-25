@@ -22,7 +22,8 @@
             = exp_month + " / " + exp_year
         .destroy__function
           .destroy__function__link
-            = link_to card_path, method: :delete, class: "destroy__btn" do
-              削除する
+            = link_to card_path, method: :delete do
+              .destroy__btn
+                削除する
 
 = render "shared/footer"

@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if Card.where(user_id: current_user.id).blank?
       flash[:alert] = "クレジットカードを登録してください"
       redirect_to new_card_path
@@ -53,7 +54,6 @@ class ItemsController < ApplicationController
       set_address
       card = Card.where(user_id: current_user.id).first
       customer = Payjp::Customer.retrieve(card.customer_id)
-      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       @default_card_information = customer.cards.retrieve(card.card_id)
       @card_brand = @default_card_information.brand
       case @card_brand

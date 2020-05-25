@@ -7,7 +7,7 @@
     .user-image
       = image_tag "/member_photo_noimage_thumb.png", size: "100x100", alt: "", class: "user-image__img"
       .user-name
-        = link_to "テストさん", "#"
+        = link_to current_user.nickname, "#"
       .user-box
         %p.user-box__evaluation
           評価

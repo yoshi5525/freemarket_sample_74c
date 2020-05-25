@@ -17,7 +17,9 @@
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
-
+    & .card-page__link {
+      padding: 20px 0;
+    }
     & a {
       text-decoration: none;
     }

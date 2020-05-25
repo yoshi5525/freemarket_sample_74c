@@ -2,6 +2,9 @@
   = render "shared/logo"
   .user__create-address__page__main
     登録が完了しました
+    .card-page__link
+      = link_to new_card_path do
+        クレジットカードの登録に進む
     .top-page__link
       = link_to root_path do
         トップページに戻る
