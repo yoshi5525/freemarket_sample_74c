@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new
   end
-  
+
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
@@ -38,8 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.addresses.build(@address.attributes)
     @user.save
-    @address.user_id = @user.id
-    
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
   end
