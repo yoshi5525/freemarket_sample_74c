@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only:[:edit, :update, :destroy, :show, :confirm, :pay]
-  before_action :move_to_index, except:[:index, :show]
+  before_action :move_to_index, except:[:index, :show, :confirm]
+  before_action :move_to_session, only:[:confirm]
+  before_action :sold_check, only:[:confirm]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -16,6 +18,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @item
     else
+      @item.images.new
       render :new
     end
   end
@@ -28,13 +31,8 @@ class ItemsController < ApplicationController
     grandchild_category = @item.category
     child_category = grandchild_category.parent
 
-    @category_parent_array = []
     @category_parent_array = Category.where(ancestry: nil)
-
-    @category_children_array = []
     @category_children_array = Category.where(ancestry: child_category.ancestry)
-
-    @category_grandchildren_array = []
     @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
   end
 
@@ -42,6 +40,12 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to @item
     else
+      grandchild_category = @item.category
+      child_category = grandchild_category.parent
+
+      @category_parent_array = Category.where(ancestry: nil)
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
+      @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
       render :edit
     end
   end
@@ -55,6 +59,9 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    if current_user.id == @item.seller_id
+      redirect_to root_path
+    end
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if Card.where(user_id: current_user.id).blank?
       flash[:alert] = "クレジットカードを登録してください"
@@ -122,6 +129,19 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def move_to_session
+    unless user_signed_in?
+      redirect_to new_user_session_path
+      flash[:alert] = "ログインしてください"
+    end
+  end
+
+  def sold_check
+    if @item.buyer_id != nil
+      redirect_to root_path
+    end
   end
 end
 

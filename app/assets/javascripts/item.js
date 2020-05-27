@@ -24,21 +24,22 @@ $(function(){
     const html = `<div class="new-wrapper__main__image-box__image-label__image-field" id="image-field-second">
                     <i class="fas fa-camera"></i>
                     <div class="new-wrapper__main__imagde-box__image-label__image-field__text">
-                      ドラッグアンドドロップ
-                      <br>
-                      またはクリックしてファイルをアップロード
+                      クリックしてファイルをアップロード
                     </div>
                   </div>`;
     return html;
   }
 
   const fileIndex = [0,1,2,3,4,5,6,7,8,9];
+  if ($('.previews__image').length <= $('.js-file').length-2) {
+    $('.js-file_group').remove();
+  }
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
 
   $('.hidden-destroy').hide();
 
-  if ($('.js-file').length == 0) {
+  if ($('.js-file').length == 0  && ($('.previews__image').length == 0)) {
     $("#image-label").attr("for", `item_images_attributes_${fileIndex[0]}_image`);
     $('.new-wrapper__main__image-box').append(buildFileField(fileIndex[0]));
   };
@@ -107,9 +108,5 @@ $(function(){
     } else {
       $("#image-field-second").css("width", 650-($('.previews__image').length-5)*130);
     }
-    if ($('.js-file').length - $('.previews__image').length == 0) {
-      $(".new-wrapper__main__image-box").append(buildFileField(targetIndex));
-      $("#image-label").attr("for", `item_images_attributes_${targetIndex}_image`);
-    };
   });
 });

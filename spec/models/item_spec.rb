@@ -39,43 +39,43 @@ describe Item, type: :model do
         item.valid?
         expect(item.errors[:category]).to include("を入力してください")
       end
-      
+
       it "conditionがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], condition: nil)
         item.valid?
         expect(item.errors[:condition]).to include("を入力してください")
       end
-      
+
       it "area_idがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], area_id: nil)
         item.valid?
         expect(item.errors[:area]).to include("を入力してください")
       end
-      
+
       it "priceがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], price: nil)
         item.valid?
         expect(item.errors[:price]).to include("は数値で入力してください", "を入力してください")
       end
-      
+
       it "preparation_dayがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], preparation_day: nil)
         item.valid?
         expect(item.errors[:preparation_day]).to include("を入力してください")
       end
-      
+
       it "postageがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], postage: nil)
         item.valid?
         expect(item.errors[:postage]).to include("を入力してください")
       end
-      
+
       it "seller_idがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], seller_id: nil)
         item.valid?
         expect(item.errors[:seller_id]).to include("を入力してください")
       end
-      
+
       it "statusがない場合は投稿できないこと" do
         item = build(:item, category_id: category[:id], status: nil)
         item.valid?
