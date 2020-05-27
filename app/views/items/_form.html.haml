@@ -1,6 +1,6 @@
 #request{action: request.path}
 = form_for @item do |f|
-  = render 'layouts/error_messages', model: f.object 
+  = render 'layouts/error_messages', model: f.object
   .new-wrapper__main
     .new-wrapper__main__title
       出品画像
@@ -19,9 +19,7 @@
             .new-wrapper__main__image-box__image-label__image-field
               = icon( 'fa', 'camera')
               .new-wrapper__main__imagde-box__image-label__image-field__text
-                ドラッグアンドドロップ
-                %br
-                またはクリックしてファイルをアップロード
+                クリックしてファイルをアップロード
             = f.fields_for :images do |i|
               .js-file_group{data: {index: i.index}}
                 = i.file_field :image, class: "js-file"
@@ -45,23 +43,17 @@
             .new-wrapper__main__image-box__image-label__image-field{ style: "display: none"}
               = icon( 'fa', 'camera')
               .new-wrapper__main__imagde-box__image-label__image-field__text
-                ドラッグアンドドロップ
-                %br
-                またはクリックしてファイルをアップロード
+                クリックしてファイルをアップロード
             - if 5 <= @item.images.length && @item.images.length < 10
               .new-wrapper__main__image-box__image-label__image-field{ id: "image-field-second"}
                 = icon( 'fa', 'camera')
                 .new-wrapper__main__imagde-box__image-label__image-field__text
-                  ドラッグアンドドロップ
-                  %br
-                  またはクリックしてファイルをアップロード
+                  クリックしてファイルをアップロード
             - else
               .new-wrapper__main__image-box__image-label__image-field{ id: "image-field-second", style: "display: none;"}
                 = icon( 'fa', 'camera')
                 .new-wrapper__main__imagde-box__image-label__image-field__text
-                  ドラッグアンドドロップ
-                  %br
-                  またはクリックしてファイルをアップロード
+                  クリックしてファイルをアップロード
             = f.fields_for :images do |i|
               .js-file_group{data: {index: i.index}}
                 = i.file_field :image, class: "js-file"
@@ -76,9 +68,7 @@
           .new-wrapper__main__image-box__image-label__image-field
             = icon( 'fa', 'camera')
             .new-wrapper__main__imagde-box__image-label__image-field__text
-              ドラッグアンドドロップ
-              %br
-              またはクリックしてファイルをアップロード
+              クリックしてファイルをアップロード
           = f.fields_for :images do |i|
             .js-file_group{data: {index: i.index}}
               = i.file_field :image, class: "js-file"
@@ -102,8 +92,7 @@
     .new-wrapper__main__title
       カテゴリー
       %span{class: "require"} 必須
-
-    - if @item.category.present?
+    - if @item.persisted?
       #category-preview
         = f.select :category, options_for_select( @category_parent_array.map{|c|[c[:name], c[:id], {}]}, @item.category.parent.parent.id), {}, {class: 'new-wrapper__main__input-select select-parent', id: 'select-parent', style: 'margin-bottom: 10px;'}
         = f.select :category, options_for_select( @category_children_array.map{|c|[c[:name], c[:id], {}]}, @item.category.parent.id), {}, {class: 'new-wrapper__main__input-select select-child', id: 'select-parent', style: 'margin-bottom: 10px;'}
