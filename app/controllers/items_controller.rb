@@ -46,6 +46,10 @@ class ItemsController < ApplicationController
       @category_parent_array = Category.where(ancestry: nil)
       @category_children_array = Category.where(ancestry: child_category.ancestry)
       @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
+      
+      item = Item.find(params[:id])
+      images = item.images
+      @item.images = images
       render :edit
     end
   end
